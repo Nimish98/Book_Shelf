@@ -1,27 +1,77 @@
+import 'package:book_management/login.dart';
 import 'package:flutter/material.dart';
-
+import 'dart:async';
+import 'Loginsignup.dart';
 void main() {
   runApp(MyApp());
 }
-
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: MyHomePage(),
+      home: Splash(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
-
-class MyHomePage extends StatefulWidget {
+class Splash extends StatefulWidget{
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return SplashState();
+  }
 }
-
-class _MyHomePageState extends State<MyHomePage> {
+class SplashState extends State<Splash>{
+  void initState() {
+    super.initState();
+    Timer(Duration(seconds: 5),() => {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) =>LoginSignUp()),
+      )
+    });
+  }
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    // TODO: implement build
+    return Scaffold(
+      backgroundColor: Colors.black,
+      body: Stack(
+        fit: StackFit.expand,
+        children: <Widget>[
+          Image(
+            image: AssetImage("images/SplashBackground.jpg"),
+            fit: BoxFit.cover,
+            color: Colors.black45,
+            colorBlendMode: BlendMode.darken,
+          ),
+         Column(
+           children: <Widget>[
+             SizedBox(
+               height: 30.0,
+             ),
+             CircleAvatar(
+               radius: 110,
+               backgroundColor: Colors.transparent,
+               child: Icon(Icons.library_books,
+                 size: 220,),
+             ),
+             SizedBox(
+               height: 30.0,
+             ),
+             Text(
+               "Book Shelf",
+               style: TextStyle(fontSize: 70,fontFamily: "Greatvibes",color: Colors.white,fontWeight: FontWeight.bold),
+             ),
+             Text("More than a book store",
+             style: TextStyle(fontSize: 14,color: Colors.white,fontFamily: "Courgette"),
+             ),
+
+           ],
+         )
+        ],
+      ),
+    );
   }
 }
