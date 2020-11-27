@@ -1,8 +1,9 @@
-import 'package:book_management/Homepage.dart';
+import 'Homepage.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:book_management/Functions.dart';
+import 'Functions.dart';
 import 'Signup.dart';
+
 class Login extends StatefulWidget{
   @override
   State<StatefulWidget> createState(){

@@ -1,6 +1,7 @@
+import 'package:book_management/Pages/Signup.dart';
 import 'package:flutter/material.dart';
-import 'Signup.dart';
 import 'login.dart';
+
 class LoginSignUp extends StatefulWidget{
   @override
   State<StatefulWidget> createState() {
