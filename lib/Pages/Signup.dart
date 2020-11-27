@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:book_management/Functions.dart';
+import 'Functions.dart';
+
+
 class SignUp extends StatefulWidget{
   @override
   State<StatefulWidget> createState(){
