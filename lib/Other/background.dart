@@ -7,7 +7,7 @@ Container backGround(BuildContext context){
     decoration: BoxDecoration(
       gradient: LinearGradient(
           colors: [
-            Color.fromRGBO(251, 176, 59, 1),
+            Color.fromRGBO(251, 176, 59, 0.8),
             Color.fromRGBO(242, 180, 120, 0.7),
           ],
           begin: Alignment.topCenter,
