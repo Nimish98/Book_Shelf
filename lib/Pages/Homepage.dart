@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:book_management/Other/List.dart';
 import 'package:flutter/material.dart';
 import 'package:book_management/Other/background.dart';
@@ -64,6 +66,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                   ? IconButton(
                                   icon: Icon(
                                     Icons.menu,
+                                    size: 30,
                                     color: Color(0xFF42210B),
                                   ),
                                   onPressed: () {
@@ -75,8 +78,11 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                     });
                                   })
                                   : IconButton(
-                                  icon: Icon(Icons.arrow_back_ios,
-                                      color: Color(0xFF42210B)),
+                                  icon: Icon(
+                                      Icons.arrow_back_ios,
+                                      color: Color(0xFF42210B),
+                                    size: 30,
+                                  ),
                                   onPressed: () {
                                     if (isOpen == true) {
                                       setState(() {
@@ -183,6 +189,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                 .width,
                             height: 330,
                             child: SingleChildScrollView(
+                              physics: BouncingScrollPhysics(),
                               scrollDirection: Axis.horizontal,
                               child: Row(
                                 children: [
@@ -214,41 +221,139 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                             Positioned(
                                                 bottom: 125,
                                                 left: 170,
-                                                child: CircleAvatar(
-                                                  backgroundColor: Color(
-                                                      0XFF42210B),
-                                                  child: CircleAvatar(
-                                                      radius: 24,
-                                                      backgroundColor: Color(
-                                                          0XFFFBB03B),
-                                                      child: Text("\u20B9"+
-                                                        popularlist[index].price
+                                                child: Container(
+                                                  height: 48,
+                                                    width: 48,
+                                                    decoration: BoxDecoration(
+                                                        color: Color.fromRGBO(251, 176, 59, 1),
+                                                      borderRadius: BorderRadius.all(Radius.circular(24)),
+                                                      border: Border.all(
+                                                        width: 1.2,
+                                                        color: Color(0xFF42210B)
+                                                      )
+                                                    ),
+                                                    child: Center(
+                                                      child: RichText(
+                                                        text: TextSpan(
+                                                          children: <TextSpan>[
+                                                            TextSpan(
+                                                              text:" \u20B9",
+                                                              style: TextStyle(
+                                                                  fontSize: 16.5,
+                                                                fontWeight: FontWeight.w600,
+                                                                  color: Color(0XFF42210B),
+                                                              ),
+                                                            ),
+                                                      TextSpan(
+                                                        text: "${popularlist[index].price}"
                                                             .toString(),
                                                         style: TextStyle(
-                                                            fontSize: 15.5,
-                                                            color: Color(
-                                                                0XFF42210B)),)),
-                                                  radius: 26,
-                                                )),
+                                                          fontSize: 15,
+                                                          fontWeight: FontWeight.w400,
+                                                          color: Color(0XFF42210B),
+                                                        ),
+                                                      ),
+                                                          ]
+                                                        ),
+                                                      ),
+                                                    ),
+                                                ),
+                                                ),
                                             Positioned(
                                                 bottom: 44.5,
                                                 left: 0,
                                                 right: 0,
-                                                child: Container(
-                                                  width: 200,
-                                                  height: 80,
-                                                  decoration: BoxDecoration(
-                                                    // color:Color(0xFFFBB03B),
-                                                    color: Color(0XFF8C6239),
-                                                    borderRadius: BorderRadius
-                                                        .only(
-                                                      bottomLeft: Radius
-                                                          .circular(35),
-                                                      bottomRight: Radius
-                                                          .circular(35),
+                                                child: ClipRRect(
+                                                  borderRadius: BorderRadius.only(
+                                                    bottomLeft: Radius
+                                                        .circular(35),
+                                                    bottomRight: Radius
+                                                        .circular(35),
+                                                  ),
+                                                  child: Container(
+                                                    width: 200,
+                                                    height: 80,
+                                                    child: BackdropFilter(
+                                                      filter: ImageFilter.blur(
+                                                        sigmaX:10,
+                                                        sigmaY:8,
+                                                      ),
+                                                      child: Padding(
+                                                        padding:  EdgeInsets.only(left:10.0),
+                                                        child: Column(
+                                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                                          children: [
+                                                            SizedBox(
+                                                              height: 5,
+                                                            ),
+                                                            RichText(
+                                                              text: TextSpan(
+                                                                style: TextStyle(
+                                                                  height: 1.3
+                                                                ),
+                                                                children: <TextSpan>[
+                                                                  TextSpan(
+                                                                    text: "Compiler Design",
+                                                                    style: TextStyle(
+                                                                      color: Color(0xFF42210B),
+                                                                      fontSize: 17,
+                                                                      fontWeight: FontWeight.w700,
+                                                                    )
+                                                                  ),
+                                                                  TextSpan(
+                                                                    text: "\nThis Book is mainly about the the different techniques",
+                                                                    style: TextStyle(
+                                                                      color: Color(0xFF8C6239),
+                                                                      fontSize: 14,
+                                                                      fontWeight: FontWeight.w800,
+                                                                    )
+                                                                  )
+                                                                ]
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    decoration: BoxDecoration(
+                                                      // color:Color(0xFFFBB03B),
+                                                      color: Colors.transparent,
+                                                      borderRadius: BorderRadius
+                                                          .only(
+                                                        bottomLeft: Radius
+                                                            .circular(35),
+                                                        bottomRight: Radius
+                                                            .circular(35),
+                                                      ),
                                                     ),
                                                   ),
-                                                ))
+                                                ),
+                                            ),
+                                            Positioned(
+                                              top:15,
+                                              left: 15,
+                                              child: Row(
+                                                mainAxisAlignment: MainAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                      "4.3",
+                                                    style: TextStyle(
+                                                      fontSize: 17,
+                                                      color: Color(0xFF42210B),
+                                                      fontWeight: FontWeight.bold
+                                                    ),
+                                                  ),
+                                                  SizedBox(
+                                                    width: 5,
+                                                  ),
+                                                  Icon(
+                                                      Icons.star_border,
+                                                    size: 22,
+                                                    color: Color(0xFF42210B),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
                                           ],
                                         ),
                                       );
