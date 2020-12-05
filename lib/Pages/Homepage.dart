@@ -207,8 +207,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                               height: 285,
                                               width: 200,
                                               decoration: BoxDecoration(
-                                                image: new DecorationImage(
-                                                  image: new AssetImage(
+                                                image:  DecorationImage(
+                                                  image:  AssetImage(
                                                       "images/Asset1.png"),
                                                   fit: BoxFit.fill,
                                                 ),
