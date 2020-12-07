@@ -9,10 +9,11 @@ import 'package:book_management/Other/FirstLayer.dart';
 class HomePage extends StatefulWidget{
   @override
   _HomePageState createState() => new _HomePageState();
-
 }
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
+
+  List Temp= popularlist;
   double xoffSet = 0;
   double yoffSet = 0;
   double angle = 0;
@@ -22,11 +23,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   bool first = false,
       second = false,
       third = false;
-  var firstColour = Colors.transparent,
+  var firstColour = Color(0xFFFBB03B),
       secondColour = Colors.transparent,
       thirdColour = Colors.transparent;
-
+  
   @override
+  Widget popular(BuildContext context) => Container();
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
@@ -117,6 +119,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                           second = false;
                                           third = false;
                                         }
+                                        Temp = popularlist;
                                       });
                                     },
                                     child: new Text("POPULAR",
@@ -141,6 +144,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                           first = false;
                                           third = false;
                                         }
+                                        Temp=Recommendedlist;
                                       });
                                     },
                                     child: new Text("RECOMMENDED",
@@ -166,6 +170,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                           second = false;
                                           first = false;
                                         }
+                                        Temp= NewReleaseslist;
                                       });
                                     },
                                     child: new Text("NEW RELEASES",
@@ -196,7 +201,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                   ListView.builder(
                                     scrollDirection: Axis.horizontal,
                                     shrinkWrap: true,
-                                    itemCount: 10,
+                                    itemCount:Temp.length,
                                     itemBuilder: (BuildContext context, index) {
                                       return Padding(
                                         padding: EdgeInsets.only(left: 40.0),
@@ -245,7 +250,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                                               ),
                                                             ),
                                                       TextSpan(
-                                                        text: "${popularlist[index].price}"
+                                                        text: "${Temp[index].price}"
                                                             .toString(),
                                                         style: TextStyle(
                                                           fontSize: 15,
@@ -293,7 +298,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                                                 ),
                                                                 children: <TextSpan>[
                                                                   TextSpan(
-                                                                    text: "Compiler Design",
+                                                                    text: Temp[index].tittle,
                                                                     style: TextStyle(
                                                                       color: Color(0xFF42210B),
                                                                       fontSize: 17,
@@ -301,7 +306,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                                                     )
                                                                   ),
                                                                   TextSpan(
-                                                                    text: "\nThis Book is mainly about the the different techniques",
+                                                                    text: "\n"+Temp[index].about,
                                                                     style: TextStyle(
                                                                       color: Color(0xFF8C6239),
                                                                       fontSize: 14,
@@ -336,7 +341,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                                 mainAxisAlignment: MainAxisAlignment.start,
                                                 children: [
                                                   Text(
-                                                      "4.3",
+                                                     Temp[index].rating.toString(),
                                                     style: TextStyle(
                                                       fontSize: 17,
                                                       color: Color(0xFF42210B),
