@@ -1,7 +1,9 @@
+import 'package:book_management/Class/Login.dart';
+import 'package:book_management/Other/AuthenticationFunctions.dart';
+import 'package:book_management/Pages/Functions.dart';
+import 'package:book_management/Pages/Signup.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'Functions.dart';
-import 'Signup.dart';
 import 'package:book_management/Pages/Homepage.dart';
 
 class Login extends StatefulWidget{
@@ -11,6 +13,9 @@ class Login extends StatefulWidget{
   }
 }
 class LoginState extends State<Login>{
+  
+  LoginField loginField;
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,6 +75,9 @@ class LoginState extends State<Login>{
                             child: TextFormField(
                               style: TextStyle(fontSize: 16,fontFamily:"Avenir LT Std 45 Book"),
                               decoration: inputDecoration(hintText: "Email or Phone Number"),
+                              onChanged: (value){
+                                loginField.email = value;
+                              },
                             ),
                           ),
                         ),
@@ -91,6 +99,9 @@ class LoginState extends State<Login>{
                             child: TextFormField(
                               style: TextStyle(fontSize: 16,fontFamily:"Avenir LT Std 45 Book"),
                               decoration: inputDecoration(hintText: "Password"),
+                              onChanged: (value){
+                                loginField.password = value;
+                              },
                             ),
                           ),
                         ),
@@ -109,8 +120,12 @@ class LoginState extends State<Login>{
                           ),
                           child: FlatButton(
                             textColor: Color(0xFFFBB03B),
-                            onPressed: () {
-                              Navigator.push(context,MaterialPageRoute(builder: (context) => HomePage()));
+                            onPressed: () async{
+                              var response = await loginUser(loginField);
+                              if(response != null) {
+                                Navigator.push(context, MaterialPageRoute(
+                                    builder: (context) => HomePage()));
+                              }
                             },
                             child: Text("LOGIN",
                               style: TextStyle(fontSize: 21,fontFamily: "Myriad"),
