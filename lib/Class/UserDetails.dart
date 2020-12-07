@@ -1,4 +1,3 @@
-import 'package:firebase/firebase.dart';
 
 class UserDetails{
 	String userName, userPhone, email, password;

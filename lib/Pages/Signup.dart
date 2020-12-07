@@ -14,7 +14,10 @@ class SignUpState extends State<SignUp>{
   
   GlobalKey<FormState> key = GlobalKey<FormState>();
   TextEditingController passwordController = TextEditingController();
-  UserDetails userDetails;
+  TextEditingController confirmController = TextEditingController();
+  String userName, userPhone, email, password;
+  UserDetails userDetails = UserDetails();
+  bool loading = false;
   
   
   @override
@@ -46,10 +49,10 @@ class SignUpState extends State<SignUp>{
                     padding: EdgeInsets.only(top: 1),
                     child: TextFormField(
                       onChanged: (String value){
-                        userDetails.email = value;
+                        email = value;
                       },
                       validator: (String value){
-                        if(value = null){
+                        if(value == null){
                           return "No Text has been Entered";
                         }
                         return null;
@@ -72,20 +75,16 @@ class SignUpState extends State<SignUp>{
                     child: TextFormField(
                       textInputAction: TextInputAction.next,
                       onChanged: (String value){
-                        userDetails.userName = value;
+                        userName = value;
                       },
                       validator: (value){
                         if(value == null){
                           return "No text has been entered";
                         }
-                        else if(value.length<10){
-                          return "Invalid Phone number";
-                        }
                         return null;
                       },
                       style: TextStyle(fontSize: 16,fontFamily:"Avenir LT Std 45 Book"),
                       decoration: inputDecoration(hintText: "Name"),
-                      keyboardType: TextInputType.phone,
                     ),
                   ),
                 ),
@@ -102,15 +101,15 @@ class SignUpState extends State<SignUp>{
                     child: TextFormField(
                       textInputAction: TextInputAction.next,
                       onChanged: (String value){
-                        userDetails.userPhone = value;
+                        userPhone = value;
                       },
-                      validator: (value){
+                      validator: (String value){
                         if(value == null){
                           return "No text has been entered";
                         }
-                        else if(value.length<10){
-                          return "Invalid Phone number";
-                        }
+                        // if(value.length != 10){
+                        //   return "Invalid Phone number";
+                        // }
                         return null;
                       },
                       style: TextStyle(fontSize: 16,fontFamily:"Avenir LT Std 45 Book"),
@@ -131,7 +130,7 @@ class SignUpState extends State<SignUp>{
                     padding: EdgeInsets.only(top: 1),
                     child: TextFormField(
                       validator: (value){
-                        if(value = null){
+                        if(value == null){
                           return "No text has been entered";
                         }
                         return null;
@@ -162,8 +161,11 @@ class SignUpState extends State<SignUp>{
                           return "No text has been entered";
                         }
                         if(value.length<6){
+                          passwordController.clear();
+                          confirmController.clear();
                           return "Please enter a password of at least 6 characters";
                         }
+                        
                         return null;
                       },
                     ),
@@ -180,9 +182,11 @@ class SignUpState extends State<SignUp>{
                   child: Padding(
                     padding: EdgeInsets.only(top: 1),
                     child: TextFormField(
+                      controller: confirmController,
                       style: TextStyle(fontSize: 16,fontFamily:"Avenir LT Std 45 Book"),
                       decoration: inputDecoration(hintText: "Confirm Password"),
                       validator: (String value){
+                        print(passwordController.text + "  2: " + value);
                         if(passwordController.text != value){
                           return "Password not matching";
                         }
@@ -192,7 +196,7 @@ class SignUpState extends State<SignUp>{
                         return null;
                       },
                       onChanged: (String value){
-                        userDetails.password = value;
+                        password = value;
                       },
                     ),
                   ),
@@ -208,8 +212,13 @@ class SignUpState extends State<SignUp>{
                   child: FlatButton(
                     textColor: Color(0xFFFBB03B),
                     onPressed: () async{
-                      bool check;
+                      bool check = false;
                       if(key.currentState.validate()){
+                        key.currentState.save();
+                        setState(() {
+                          loading= true;
+                        });
+                        userDetails = UserDetails(userName: userName, userPhone: userPhone, email: email, password: password);
                         check = await userSignUp(userDetails);
                       }
                       if(check) {
@@ -217,7 +226,7 @@ class SignUpState extends State<SignUp>{
                             context) => SignUp()));
                       }
                     },
-                    child: Text("SIGNUP",
+                    child: loading? CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(Color(0xFFC69C6D)),):Text("SIGNUP",
                       style: TextStyle(fontSize: 21,fontFamily: "Myriad"),
                     ),
                   ),

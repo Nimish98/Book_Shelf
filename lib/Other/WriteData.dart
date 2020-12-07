@@ -11,7 +11,7 @@ Future<void> writeUserData(UserDetails userData) async{
 	
 	try{
 		dbr.child("Users")
-				.child(userData.email)
+				.child(userData.email.replaceAll('.', ','))
 				.set({
 			"Name":userData.userName,
 			"PhoneNumber":userData.userPhone,

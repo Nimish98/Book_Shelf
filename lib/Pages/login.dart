@@ -15,6 +15,8 @@ class Login extends StatefulWidget{
 class LoginState extends State<Login>{
   
   LoginField loginField;
+  String email, password;
+  bool loading = false;
   
   @override
   Widget build(BuildContext context) {
@@ -76,7 +78,7 @@ class LoginState extends State<Login>{
                               style: TextStyle(fontSize: 16,fontFamily:"Avenir LT Std 45 Book"),
                               decoration: inputDecoration(hintText: "Email or Phone Number"),
                               onChanged: (value){
-                                loginField.email = value;
+                                email = value;
                               },
                             ),
                           ),
@@ -100,7 +102,7 @@ class LoginState extends State<Login>{
                               style: TextStyle(fontSize: 16,fontFamily:"Avenir LT Std 45 Book"),
                               decoration: inputDecoration(hintText: "Password"),
                               onChanged: (value){
-                                loginField.password = value;
+                                password = value;
                               },
                             ),
                           ),
@@ -121,13 +123,17 @@ class LoginState extends State<Login>{
                           child: FlatButton(
                             textColor: Color(0xFFFBB03B),
                             onPressed: () async{
+                              setState(() {
+                                loading = true;
+                              });
+                              loginField = LoginField(email, password);
                               var response = await loginUser(loginField);
                               if(response != null) {
                                 Navigator.push(context, MaterialPageRoute(
                                     builder: (context) => HomePage()));
                               }
                             },
-                            child: Text("LOGIN",
+                            child: loading?CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(Color(0xFFC69C6D)),) :Text("LOGIN",
                               style: TextStyle(fontSize: 21,fontFamily: "Myriad"),
                             ),
                           ),
