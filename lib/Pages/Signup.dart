@@ -241,6 +241,9 @@ class SignUpState extends State<SignUp>{
                           );
                         });
                       }
+                      setState(() {
+                        loading = false;
+                      });
                     },
                     child: loading? CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(Color(0xFFC69C6D)),):Text("SIGNUP",
                       style: TextStyle(fontSize: 21,fontFamily: "Myriad"),
