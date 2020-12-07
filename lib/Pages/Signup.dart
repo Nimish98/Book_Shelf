@@ -48,6 +48,7 @@ class SignUpState extends State<SignUp>{
                   child: Padding(
                     padding: EdgeInsets.only(top: 1),
                     child: TextFormField(
+                      cursorColor: Color(0xFF42210B),
                       onChanged: (String value){
                         email = value;
                       },
@@ -73,6 +74,7 @@ class SignUpState extends State<SignUp>{
                   child: Padding(
                     padding: EdgeInsets.only(top: 1),
                     child: TextFormField(
+                      cursorColor: Color(0xFF42210B),
                       textInputAction: TextInputAction.next,
                       onChanged: (String value){
                         userName = value;
@@ -99,6 +101,7 @@ class SignUpState extends State<SignUp>{
                   child: Padding(
                     padding: EdgeInsets.only(top: 1),
                     child: TextFormField(
+                      cursorColor: Color(0xFF42210B),
                       textInputAction: TextInputAction.next,
                       onChanged: (String value){
                         userPhone = value;
@@ -129,6 +132,7 @@ class SignUpState extends State<SignUp>{
                   child: Padding(
                     padding: EdgeInsets.only(top: 1),
                     child: TextFormField(
+                      cursorColor: Color(0xFF42210B),
                       validator: (value){
                         if(value == null){
                           return "No text has been entered";
@@ -153,6 +157,7 @@ class SignUpState extends State<SignUp>{
                   child: Padding(
                     padding: EdgeInsets.only(top: 1),
                     child: TextFormField(
+                      cursorColor: Color(0xFF42210B),
                       controller: passwordController,
                       style: TextStyle(fontSize: 16,fontFamily:"Avenir LT Std 45 Book"),
                       decoration: inputDecoration(hintText: "Password"),
@@ -182,6 +187,7 @@ class SignUpState extends State<SignUp>{
                   child: Padding(
                     padding: EdgeInsets.only(top: 1),
                     child: TextFormField(
+                      cursorColor: Color(0xFF42210B),
                       controller: confirmController,
                       style: TextStyle(fontSize: 16,fontFamily:"Avenir LT Std 45 Book"),
                       decoration: inputDecoration(hintText: "Confirm Password"),

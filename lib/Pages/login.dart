@@ -75,6 +75,7 @@ class LoginState extends State<Login>{
                           child: Padding(
                             padding: EdgeInsets.only(top: 1),
                             child: TextFormField(
+                              cursorColor: Color(0xFF42210B),
                               style: TextStyle(fontSize: 16,fontFamily:"Avenir LT Std 45 Book"),
                               decoration: inputDecoration(hintText: "Email or Phone Number"),
                               onChanged: (value){
@@ -99,6 +100,7 @@ class LoginState extends State<Login>{
                           child: Padding(
                             padding: EdgeInsets.only(top: 1),
                             child: TextFormField(
+                              cursorColor: Color(0xFF42210B),
                               style: TextStyle(fontSize: 16,fontFamily:"Avenir LT Std 45 Book"),
                               decoration: inputDecoration(hintText: "Password"),
                               onChanged: (value){
