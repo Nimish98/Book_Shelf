@@ -1,6 +1,7 @@
+import 'package:book_management/Other/AuthenticationFunctions.dart';
 import 'package:book_management/Pages/Signup.dart';
+import 'package:book_management/Pages/login.dart';
 import 'package:flutter/material.dart';
-import 'login.dart';
 
 class LoginSignUp extends StatefulWidget{
   @override
@@ -44,6 +45,7 @@ class LoginSignUpState extends State<LoginSignUp>{
                 child: FlatButton(
                   textColor: Color(0xFFEA8C1F),
                   onPressed: () {
+                    
                     Navigator.push(context,MaterialPageRoute(builder: (context) => Login()));
                   },
                   child: Text("LOGIN",

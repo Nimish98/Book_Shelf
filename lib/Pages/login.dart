@@ -1,7 +1,9 @@
+import 'package:book_management/Class/Login.dart';
+import 'package:book_management/Other/AuthenticationFunctions.dart';
+import 'package:book_management/Pages/Functions.dart';
+import 'package:book_management/Pages/Signup.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'Functions.dart';
-import 'Signup.dart';
 import 'package:book_management/Pages/Homepage.dart';
 
 class Login extends StatefulWidget{
@@ -11,6 +13,11 @@ class Login extends StatefulWidget{
   }
 }
 class LoginState extends State<Login>{
+  
+  LoginField loginField;
+  String email, password;
+  bool loading = false;
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,8 +75,12 @@ class LoginState extends State<Login>{
                           child: Padding(
                             padding: EdgeInsets.only(top: 1),
                             child: TextFormField(
+                              cursorColor: Color(0xFF42210B),
                               style: TextStyle(fontSize: 16,fontFamily:"Avenir LT Std 45 Book"),
                               decoration: inputDecoration(hintText: "Email or Phone Number"),
+                              onChanged: (value){
+                                email = value;
+                              },
                             ),
                           ),
                         ),
@@ -89,8 +100,12 @@ class LoginState extends State<Login>{
                           child: Padding(
                             padding: EdgeInsets.only(top: 1),
                             child: TextFormField(
+                              cursorColor: Color(0xFF42210B),
                               style: TextStyle(fontSize: 16,fontFamily:"Avenir LT Std 45 Book"),
                               decoration: inputDecoration(hintText: "Password"),
+                              onChanged: (value){
+                                password = value;
+                              },
                             ),
                           ),
                         ),
@@ -109,10 +124,19 @@ class LoginState extends State<Login>{
                           ),
                           child: FlatButton(
                             textColor: Color(0xFFFBB03B),
-                            onPressed: () {
-                              Navigator.push(context,MaterialPageRoute(builder: (context) => HomePage()));
+                            onPressed: () async{
+                              setState(() {
+                                loading = true;
+                              });
+                              loginField = LoginField(email, password);
+                              var response = await loginUser(loginField);
+                              if(response != null) {
+                                Navigator.pop(context);
+                                Navigator.push(context, MaterialPageRoute(
+                                    builder: (context) => HomePage()));
+                              }
                             },
-                            child: Text("LOGIN",
+                            child: loading?CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(Color(0xFFC69C6D)),) :Text("LOGIN",
                               style: TextStyle(fontSize: 21,fontFamily: "Myriad"),
                             ),
                           ),
@@ -138,13 +162,10 @@ class LoginState extends State<Login>{
                                   color: Color(0xFF42210B), fontSize: 16),
                               children: <TextSpan>[
                                 TextSpan(text: ' Sign Up',
-                                    style: TextStyle(
-                                        color: Color(0xFFEA981C), fontSize: 16),
-                                    recognizer: TapGestureRecognizer()
-                                      ..onTap = () {
-                                        Navigator.push(context,MaterialPageRoute(builder: (context) => SignUp()));
-                                      }
-                                )
+                                    style: TextStyle(color: Color(0xFFEA981C), fontSize: 16),
+                                    recognizer: TapGestureRecognizer()..onTap = () {
+                                  Navigator.push(context,MaterialPageRoute(builder: (context) => SignUp()));
+                                })
                               ]
                           ),
                         ),
