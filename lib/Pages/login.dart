@@ -1,8 +1,8 @@
-import 'Homepage.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'Functions.dart';
 import 'Signup.dart';
+import 'package:book_management/Pages/Homepage.dart';
 
 class Login extends StatefulWidget{
   @override
@@ -18,7 +18,7 @@ class LoginState extends State<Login>{
           child: Stack(
             children: [
               Container(
-                color: Color(0x80F2B478),
+                color: Color.fromRGBO(242, 180, 120, 0.8),
                 height: MediaQuery.of(context).size.height,
                 width: MediaQuery.of(context).size.width,
                 child: Column(

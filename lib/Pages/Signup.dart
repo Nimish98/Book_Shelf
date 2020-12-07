@@ -15,7 +15,7 @@ class SignUpState extends State<SignUp>{
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        color: Color(0x80F2B478),
+        color: Color.fromRGBO(242, 180, 120, 0.8),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
