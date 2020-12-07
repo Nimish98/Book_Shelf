@@ -131,6 +131,7 @@ class LoginState extends State<Login>{
                               loginField = LoginField(email, password);
                               var response = await loginUser(loginField);
                               if(response != null) {
+                                Navigator.pop(context);
                                 Navigator.push(context, MaterialPageRoute(
                                     builder: (context) => HomePage()));
                               }
@@ -161,13 +162,10 @@ class LoginState extends State<Login>{
                                   color: Color(0xFF42210B), fontSize: 16),
                               children: <TextSpan>[
                                 TextSpan(text: ' Sign Up',
-                                    style: TextStyle(
-                                        color: Color(0xFFEA981C), fontSize: 16),
-                                    recognizer: TapGestureRecognizer()
-                                      ..onTap = () {
-                                        Navigator.push(context,MaterialPageRoute(builder: (context) => SignUp()));
-                                      }
-                                )
+                                    style: TextStyle(color: Color(0xFFEA981C), fontSize: 16),
+                                    recognizer: TapGestureRecognizer()..onTap = () {
+                                  Navigator.push(context,MaterialPageRoute(builder: (context) => SignUp()));
+                                })
                               ]
                           ),
                         ),

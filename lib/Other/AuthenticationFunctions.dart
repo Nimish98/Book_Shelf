@@ -51,13 +51,13 @@ Future<bool> userSignUp(UserDetails userDetails) async{
 				email: userDetails.email, password: userDetails.password);
 		
 		if(userCredential.user != null) {
-			Fluttertoast.showToast(
+			await writeUserData(userDetails);
+			await Fluttertoast.showToast(
 				msg: "Registered Successful",
 				gravity: ToastGravity.BOTTOM,
 				backgroundColor: Colors.orange,
 				textColor: Colors.white,
 			);
-			await writeUserData(userDetails);
 			
 			return true;
 		}

@@ -1,7 +1,9 @@
 import 'package:book_management/Class/UserDetails.dart';
 import 'package:book_management/Other/AuthenticationFunctions.dart';
 import 'package:book_management/Pages/Functions.dart';
+import 'package:book_management/Pages/login.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 
 class SignUp extends StatefulWidget{
@@ -228,8 +230,16 @@ class SignUpState extends State<SignUp>{
                         check = await userSignUp(userDetails);
                       }
                       if(check) {
+                        Navigator.pop(context);
                         Navigator.push(context, MaterialPageRoute(builder: (
-                            context) => SignUp()));
+                            context) => Login())).then((value){
+                          Fluttertoast.showToast(
+                            msg: "Now Login Using Your Credentials",
+                            gravity: ToastGravity.BOTTOM,
+                            backgroundColor: Colors.orange,
+                            textColor: Colors.white,
+                          );
+                        });
                       }
                     },
                     child: loading? CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(Color(0xFFC69C6D)),):Text("SIGNUP",
