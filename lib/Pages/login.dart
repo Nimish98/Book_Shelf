@@ -22,159 +22,164 @@ class LoginState extends State<Login>{
   Widget build(BuildContext context) {
     return Scaffold(
         body: SingleChildScrollView(
-          child: Stack(
-            children: [
-              Container(
-                color: Color.fromRGBO(242, 180, 120, 0.8),
-                height: MediaQuery.of(context).size.height,
-                width: MediaQuery.of(context).size.width,
+          child: Container(
+            color: Color.fromRGBO(242, 180, 120, 0.8),
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            child: Stack(
+              children: [
+                Container(
+                  color: Color.fromRGBO(242, 180, 120, 0.8),
+                  height: MediaQuery.of(context).size.height,
+                  width: MediaQuery.of(context).size.width,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      ClipPath(
+                          child: Container(
+                            color: Colors.amber,
+                            height: MediaQuery.of(context).size.height,
+                            width: MediaQuery.of(context).size.width,
+                            child: Image(
+                              image: AssetImage("images/loginbg.jpg"),
+                              fit: BoxFit.fill,
+                              color: Colors.black38,
+                              colorBlendMode: BlendMode.darken,
+                            ),
+                          ),
+                          clipper: MyClipper()
+                      ),
+                    ],
+                  ),
+                ),
+              Padding(
+                padding: EdgeInsets.only(top: 300.0),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    ClipPath(
-                        child: Container(
-                          color: Colors.amber,
-                          height: MediaQuery.of(context).size.height,
-                          width: MediaQuery.of(context).size.width,
-                          child: Image(
-                            image: AssetImage("images/loginbg.jpg"),
-                            fit: BoxFit.fill,
-                            color: Colors.black38,
-                            colorBlendMode: BlendMode.darken,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(height: 40,),
+                     Row(
+                       mainAxisAlignment: MainAxisAlignment.center,
+                       children: [
+                         Text("LOGIN",
+                           style:TextStyle(fontSize: 34,color: Color(0xFF42210B)),),
+                       ],
+                     ),
+                      SizedBox(height: 30,),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                                color: Color(0xFFC69C6D),
+                                borderRadius: BorderRadius.circular(65.0)
+                            ),
+                            width: 325,
+                            height: 58,
+                            child: Padding(
+                              padding: EdgeInsets.only(top: 1),
+                              child: TextFormField(
+                                cursorColor: Color(0xFF42210B),
+                                style: TextStyle(fontSize: 16,fontFamily:"Avenir LT Std 45 Book"),
+                                decoration: inputDecoration(hintText: "Email or Phone Number"),
+                                onChanged: (value){
+                                  email = value;
+                                },
+                              ),
+                            ),
                           ),
-                        ),
-                        clipper: MyClipper()
-                    ),
-                  ],
-                ),
-              ),
-            Padding(
-              padding: EdgeInsets.only(top: 300.0),
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(height: 40,),
-                   Row(
-                     mainAxisAlignment: MainAxisAlignment.center,
-                     children: [
-                       Text("LOGIN",
-                         style:TextStyle(fontSize: 34,color: Color(0xFF42210B)),),
-                     ],
-                   ),
-                    SizedBox(height: 30,),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                              color: Color(0xFFC69C6D),
-                              borderRadius: BorderRadius.circular(65.0)
+                        ],
+                      ),
+                      SizedBox(height: 30,),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                                color: Color(0xFFC69C6D),
+                                borderRadius: BorderRadius.circular(65.0)
+                            ),
+                            width: 325,
+                            height: 58,
+                            child: Padding(
+                              padding: EdgeInsets.only(top: 1),
+                              child: TextFormField(
+                                cursorColor: Color(0xFF42210B),
+                                style: TextStyle(fontSize: 16,fontFamily:"Avenir LT Std 45 Book"),
+                                decoration: inputDecoration(hintText: "Password"),
+                                onChanged: (value){
+                                  password = value;
+                                },
+                              ),
+                            ),
                           ),
-                          width: 325,
-                          height: 58,
-                          child: Padding(
-                            padding: EdgeInsets.only(top: 1),
-                            child: TextFormField(
-                              cursorColor: Color(0xFF42210B),
-                              style: TextStyle(fontSize: 16,fontFamily:"Avenir LT Std 45 Book"),
-                              decoration: inputDecoration(hintText: "Email or Phone Number"),
-                              onChanged: (value){
-                                email = value;
+                        ],
+                      ),
+                      SizedBox(height: 30,),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            height: 58,
+                            width: 325,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(40),
+                              color: Color(0xFF8C6239),
+                            ),
+                            child: FlatButton(
+                              textColor: Color(0xFFFBB03B),
+                              onPressed: () async{
+                                setState(() {
+                                  loading = true;
+                                });
+                                loginField = LoginField(email, password);
+                                var response = await loginUser(loginField);
+                                if(response != null) {
+                                  Navigator.pop(context);
+                                  Navigator.push(context, MaterialPageRoute(
+                                      builder: (context) => HomePage()));
+                                }
                               },
+                              child: loading?CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(Color(0xFFC69C6D)),) :Text("LOGIN",
+                                style: TextStyle(fontSize: 21,fontFamily: "Myriad"),
+                              ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 30,),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                              color: Color(0xFFC69C6D),
-                              borderRadius: BorderRadius.circular(65.0)
-                          ),
-                          width: 325,
-                          height: 58,
-                          child: Padding(
-                            padding: EdgeInsets.only(top: 1),
-                            child: TextFormField(
-                              cursorColor: Color(0xFF42210B),
-                              style: TextStyle(fontSize: 16,fontFamily:"Avenir LT Std 45 Book"),
-                              decoration: inputDecoration(hintText: "Password"),
-                              onChanged: (value){
-                                password = value;
-                              },
+                        ],
+                      ),
+                      SizedBox(height: 20,),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("Forgot Password?",
+                            style:TextStyle(fontSize: 16,color: Color(0xFF42210B)),),
+                        ],
+                      ),
+                      SizedBox(height: 20,),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          RichText(
+                            text: TextSpan(
+                                text: 'Don\'t have an account?',
+                                style: TextStyle(
+                                    color: Color(0xFF42210B), fontSize: 16),
+                                children: <TextSpan>[
+                                  TextSpan(text: ' Sign Up',
+                                      style: TextStyle(color: Color(0xFFEA981C), fontSize: 16),
+                                      recognizer: TapGestureRecognizer()..onTap = () {
+                                    Navigator.push(context,MaterialPageRoute(builder: (context) => SignUp()));
+                                  })
+                                ]
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 30,),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          height: 58,
-                          width: 325,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(40),
-                            color: Color(0xFF8C6239),
-                          ),
-                          child: FlatButton(
-                            textColor: Color(0xFFFBB03B),
-                            onPressed: () async{
-                              setState(() {
-                                loading = true;
-                              });
-                              loginField = LoginField(email, password);
-                              var response = await loginUser(loginField);
-                              if(response != null) {
-                                Navigator.pop(context);
-                                Navigator.push(context, MaterialPageRoute(
-                                    builder: (context) => HomePage()));
-                              }
-                            },
-                            child: loading?CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(Color(0xFFC69C6D)),) :Text("LOGIN",
-                              style: TextStyle(fontSize: 21,fontFamily: "Myriad"),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 20,),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text("Forgot Password?",
-                          style:TextStyle(fontSize: 16,color: Color(0xFF42210B)),),
-                      ],
-                    ),
-                    SizedBox(height: 20,),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        RichText(
-                          text: TextSpan(
-                              text: 'Don\'t have an account?',
-                              style: TextStyle(
-                                  color: Color(0xFF42210B), fontSize: 16),
-                              children: <TextSpan>[
-                                TextSpan(text: ' Sign Up',
-                                    style: TextStyle(color: Color(0xFFEA981C), fontSize: 16),
-                                    recognizer: TapGestureRecognizer()..onTap = () {
-                                  Navigator.push(context,MaterialPageRoute(builder: (context) => SignUp()));
-                                })
-                              ]
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-            )
-            ],
+                        ],
+                      ),
+                    ],
+                  ),
+              )
+              ],
+            ),
           ),
         )
     );
