@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:book_management/OpeningScreen.dart';
 import 'package:book_management/Other/List.dart';
 import 'package:flutter/material.dart';
 import 'package:book_management/Other/background.dart';
@@ -239,10 +240,11 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                                   decoration: BoxDecoration(
                                                     image:  DecorationImage(
                                                       image:  AssetImage(
-                                                          "images/Asset1.jpg"),
-                                                      fit: BoxFit.fill,
+                                                          "images/Asset1.png"
+                                                      ),
+                                                      fit: BoxFit.cover,
                                                     ),
-                                                    color: Colors.black87,
+                                                    color: Colors.amberAccent,
                                                     borderRadius: BorderRadius
                                                         .circular(35),
                                                   ),
@@ -382,22 +384,22 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                                     ],
                                                   ),
                                                 ),
-                                                Positioned(
-                                                  top: 70,
-                                                  left: 55,
-                                                  child: Container(
-                                                    height: 100,
-                                                    width: 100,
-                                                    decoration: BoxDecoration(
-                                                        color: Color(0xFF8C6239),
-                                                        borderRadius: BorderRadius.all(Radius.circular(55)),
-                                                        border: Border.all(
-                                                          width: 1.2,
-                                                          color: Color.fromRGBO(251, 176, 59, 1),
-                                                        )
-                                                    ),
-                                                  ),
-                                                ),
+                                                // Positioned(
+                                                //   top: 70,
+                                                //   left: 55,
+                                                //   child: Container(
+                                                //     height: 100,
+                                                //     width: 100,
+                                                //     decoration: BoxDecoration(
+                                                //         color: Color(0xFF8C6239),
+                                                //         borderRadius: BorderRadius.all(Radius.circular(55)),
+                                                //         border: Border.all(
+                                                //           width: 1.2,
+                                                //           color: Color.fromRGBO(251, 176, 59, 1),
+                                                //         )
+                                                //     ),
+                                                //   ),
+                                                // ),
                                               ],
                                             ),
                                           );
@@ -417,6 +419,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         children: [
                           backGround(context),
                           Text("hey2"),
+                          Center(
+                            // child: SlidingCardsView(),
+                          ),
                         ],
                       ),
                       Stack(

@@ -163,6 +163,7 @@ class SignUpState extends State<SignUp>{
                       controller: passwordController,
                       style: TextStyle(fontSize: 16,fontFamily:"Avenir LT Std 45 Book"),
                       decoration: inputDecoration(hintText: "Password"),
+                      obscureText: true,
                       validator: (value){
                         if(value ==null){
                           return "No text has been entered";
@@ -193,6 +194,7 @@ class SignUpState extends State<SignUp>{
                       controller: confirmController,
                       style: TextStyle(fontSize: 16,fontFamily:"Avenir LT Std 45 Book"),
                       decoration: inputDecoration(hintText: "Confirm Password"),
+                      obscureText: true,
                       validator: (String value){
                         print(passwordController.text + "  2: " + value);
                         if(passwordController.text != value){
