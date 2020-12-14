@@ -1,7 +1,6 @@
 import 'dart:ui';
 import 'package:book_management/Class/Books.dart';
 import 'package:book_management/Other/CRUD.dart';
-import 'package:book_management/Other/List.dart';
 import 'package:flutter/material.dart';
 import 'package:book_management/Other/background.dart';
 import 'package:matrix4_transform/matrix4_transform.dart';
@@ -329,27 +328,27 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                                               ),
                                                               RichText(
                                                                 text: TextSpan(
-                                                                    style: TextStyle(
-                                                                        height: 1.3
-                                                                    ),
-                                                                    children: <TextSpan>[
-                                                                      TextSpan(
-                                                                          text: Temp[index].name,
-                                                                          style: TextStyle(
-                                                                            color: Color(0xFF42210B),
-                                                                            fontSize: 17,
-                                                                            fontWeight: FontWeight.w700,
-                                                                          )
-                                                                      ),
-                                                                      TextSpan(
-                                                                          text: "\n"+Temp[index].intro,
-                                                                          style: TextStyle(
-                                                                            color: Color(0xFF8C6239),
-                                                                            fontSize: 14,
-                                                                            fontWeight: FontWeight.w800,
-                                                                          )
+                                                                  style: TextStyle(
+                                                                      height: 1.3
+                                                                  ),
+                                                                  children: <TextSpan>[
+                                                                    TextSpan(
+                                                                      text: Temp[index].name,
+                                                                      style: TextStyle(
+                                                                        color: Color(0xFF42210B),
+                                                                        fontSize: 17,
+                                                                        fontWeight: FontWeight.w700,
                                                                       )
-                                                                    ]
+                                                                    ),
+                                                                    TextSpan(
+                                                                      text: "\n"+Temp[index].intro,
+                                                                      style: TextStyle(
+                                                                        color: Color(0xFF8C6239),
+                                                                        fontSize: 14,
+                                                                        fontWeight: FontWeight.w800,
+                                                                      )
+                                                                    )
+                                                                  ]
                                                                 ),
                                                               ),
                                                             ],
@@ -401,12 +400,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                                     height: 100,
                                                     width: 100,
                                                     decoration: BoxDecoration(
-                                                        color: Color(0xFF8C6239),
-                                                        borderRadius: BorderRadius.all(Radius.circular(55)),
-                                                        border: Border.all(
-                                                          width: 1.2,
-                                                          color: Color.fromRGBO(251, 176, 59, 1),
-                                                        )
+                                                      color: Color(0xFF8C6239),
+                                                      borderRadius: BorderRadius.all(Radius.circular(55)),
+                                                      border: Border.all(
+                                                        width: 1.2,
+                                                        color: Color.fromRGBO(251, 176, 59, 1),
+                                                      )
                                                     ),
                                                   ),
                                                 ),
