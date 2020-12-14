@@ -1,4 +1,6 @@
 import 'dart:ui';
+import 'package:book_management/Class/Books.dart';
+import 'package:book_management/Other/CRUD.dart';
 import 'package:book_management/OpeningScreen.dart';
 import 'package:book_management/Other/List.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +15,7 @@ class HomePage extends StatefulWidget{
 }
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
-  List Temp= popularlist;
+  List<Books> Temp;
   double xoffSet = 0;
   double yoffSet = 0;
   double angle = 0;
@@ -36,6 +38,11 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   void initState() {
     super.initState();
     _pageController = PageController(initialPage: 0);
+    readBooks().then((value){
+      setState(() {
+        Temp =value;
+      });
+    });
   }
 
   @override
@@ -137,6 +144,11 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                     RaisedButton(
                                         onPressed: () {
                                           print("Button is pressed");
+                                          readBooks().then((value){
+                                            setState(() {
+                                              Temp = value;
+                                            });
+                                          });
                                           setState(() {
                                             first = !first;
                                             if (first == true) {
@@ -146,7 +158,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                               second = false;
                                               third = false;
                                             }
-                                            Temp = popularlist;
                                           });
                                         },
                                         child: new Text("POPULAR",
@@ -171,7 +182,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                               first = false;
                                               third = false;
                                             }
-                                            Temp=Recommendedlist;
+                                            // Temp=Recommendedlist;
                                           });
                                         },
                                         child: new Text("RECOMMENDED",
@@ -196,7 +207,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                               second = false;
                                               first = false;
                                             }
-                                            Temp= NewReleaseslist;
+                                            // Temp= NewReleaseslist;
                                           });
                                         },
                                         child: new Text("NEW RELEASES",
@@ -222,7 +233,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                 child: SingleChildScrollView(
                                   physics: BouncingScrollPhysics(),
                                   scrollDirection: Axis.horizontal,
-                                  child: Row(
+                                  child: Temp != null?Row(
                                     children: [
                                       ListView.builder(
                                         scrollDirection: Axis.horizontal,
@@ -243,6 +254,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                                           "images/Asset1.png"
                                                       ),
                                                       fit: BoxFit.cover,
+                                                      image:  NetworkImage(
+                                                        Temp[index].image,
+                                                      ),
+                                                      fit: BoxFit.fill,
                                                     ),
                                                     color: Colors.amberAccent,
                                                     borderRadius: BorderRadius
@@ -324,7 +339,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                                                     ),
                                                                     children: <TextSpan>[
                                                                       TextSpan(
-                                                                          text: Temp[index].tittle,
+                                                                          text: Temp[index].name,
                                                                           style: TextStyle(
                                                                             color: Color(0xFF42210B),
                                                                             fontSize: 17,
@@ -332,7 +347,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                                                           )
                                                                       ),
                                                                       TextSpan(
-                                                                          text: "\n"+Temp[index].about,
+                                                                          text: "\n"+Temp[index].intro,
                                                                           style: TextStyle(
                                                                             color: Color(0xFF8C6239),
                                                                             fontSize: 14,
@@ -407,7 +422,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                       ),
                                       SizedBox(width: 40,)
                                     ],
-                                  ),
+                                  ):Center(child: CircularProgressIndicator()),
                                 ),
                               ),
 
