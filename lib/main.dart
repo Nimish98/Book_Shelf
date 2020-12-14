@@ -1,3 +1,4 @@
+import 'package:book_management/Pages/Homepage.dart';
 import 'package:book_management/Pages/Loginsignup.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
@@ -13,7 +14,6 @@ class MyApp extends StatelessWidget {
   
   
   void firebaseInit() async{
-    print("here");
     await Firebase.initializeApp();
   }
   
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       statusBarIconBrightness: Brightness.dark,
     ));
     return MaterialApp(
-      home: LoginSignUp(),
+      home: HomePage(),
       debugShowCheckedModeBanner: false,
     );
   }

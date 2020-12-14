@@ -11,7 +11,8 @@ class Popular{
   String tittle;
   String about;
 }
-List<Popular>popularlist = <Popular>[
+
+List<Popular> popularlist = <Popular>[
   Popular(price: 220,tittle: "Compiler Designing",about: "This Book is mainly about the the different techniques",rating: 3.4),
   Popular(price: 340,tittle: "Basic Electronics",about: "This Book is mainly about the the different techniques",rating: 4.4),
   Popular(price: 290,tittle: "Operating Systems",about: "",rating: 4.3),
