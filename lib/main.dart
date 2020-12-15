@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       statusBarIconBrightness: Brightness.dark,
     ));
     return MaterialApp(
-      home: HomePage(),
+      home: LoginSignUp(),
       debugShowCheckedModeBanner: false,
     );
   }

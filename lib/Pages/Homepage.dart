@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:book_management/Class/Books.dart';
+import 'package:book_management/Class/UserDetails.dart';
 import 'package:book_management/Other/CRUD.dart';
 import 'package:flutter/material.dart';
 import 'package:book_management/Other/background.dart';
@@ -8,6 +9,9 @@ import 'package:book_management/Other/FirstLayer.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 
 class HomePage extends StatefulWidget{
+  final UserDetails userDetails;
+
+  const HomePage({Key key, this.userDetails}) : super(key: key);
   @override
   _HomePageState createState() => new _HomePageState();
 }
@@ -54,6 +58,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       this._page = page;
     });
   }
+  
   @override
   Widget popular(BuildContext context) => Container();
   Widget build(BuildContext context) {

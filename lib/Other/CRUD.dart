@@ -21,3 +21,7 @@ Future<List<Books>> readBooks() async{
 	print(booksList.length);
 	return booksList;
 }
+
+// Future<> writeUserDetailsBloodBank(){
+// 	FirebaseDatabase.instance.reference().child("BookSelf").child("BloodBank").child("UserDetails").
+// }
