@@ -60,7 +60,7 @@ class SignUpState extends State<SignUp>{
                         }
                         return null;
                       },
-                      style: TextStyle(fontSize: 16,fontFamily:"Avenir LT Std 45 Book"),
+                      style: TextStyle(fontSize: 16),
                       decoration: inputDecoration(hintText: "Email"),
                     ),
                   ),
@@ -87,7 +87,7 @@ class SignUpState extends State<SignUp>{
                         }
                         return null;
                       },
-                      style: TextStyle(fontSize: 16,fontFamily:"Avenir LT Std 45 Book"),
+                      style: TextStyle(fontSize: 16),
                       decoration: inputDecoration(hintText: "Name"),
                     ),
                   ),
@@ -117,7 +117,7 @@ class SignUpState extends State<SignUp>{
                         // }
                         return null;
                       },
-                      style: TextStyle(fontSize: 16,fontFamily:"Avenir LT Std 45 Book"),
+                      style: TextStyle(fontSize: 16),
                       decoration: inputDecoration(hintText: "Phone Number"),
                       keyboardType: TextInputType.phone,
                     ),
@@ -135,33 +135,8 @@ class SignUpState extends State<SignUp>{
                     padding: EdgeInsets.only(top: 1),
                     child: TextFormField(
                       cursorColor: Color(0xFF42210B),
-                      validator: (value){
-                        if(value == null){
-                          return "No text has been entered";
-                        }
-                        return null;
-                      },
-                      onChanged: (String value){
-                      },
-                      style: TextStyle(fontSize: 16,fontFamily:"Avenir LT Std 45 Book"),
-                      decoration: inputDecoration(hintText: "Genre"),
-                    ),
-                  ),
-                ),
-                SizedBox(height: 30,),
-                Container(
-                  decoration: BoxDecoration(
-                      color: Color(0xFFC69C6D),
-                      borderRadius: BorderRadius.circular(65.0)
-                  ),
-                  width: 325,
-                  height: 58,
-                  child: Padding(
-                    padding: EdgeInsets.only(top: 1),
-                    child: TextFormField(
-                      cursorColor: Color(0xFF42210B),
                       controller: passwordController,
-                      style: TextStyle(fontSize: 16,fontFamily:"Avenir LT Std 45 Book"),
+                      style: TextStyle(fontSize: 16),
                       decoration: inputDecoration(hintText: "Password"),
                       obscureText: true,
                       validator: (value){
@@ -192,7 +167,7 @@ class SignUpState extends State<SignUp>{
                     child: TextFormField(
                       cursorColor: Color(0xFF42210B),
                       controller: confirmController,
-                      style: TextStyle(fontSize: 16,fontFamily:"Avenir LT Std 45 Book"),
+                      style: TextStyle(fontSize: 16),
                       decoration: inputDecoration(hintText: "Confirm Password"),
                       obscureText: true,
                       validator: (String value){

@@ -1,3 +1,4 @@
+import 'package:book_management/Pages/DetailsPage.dart';
 import 'package:book_management/Pages/Homepage.dart';
 import 'package:book_management/Pages/Loginsignup.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
       statusBarIconBrightness: Brightness.dark,
     ));
     return MaterialApp(
-      home: HomePage(),
+      home: LoginSignUp(),
       debugShowCheckedModeBanner: false,
     );
   }

@@ -1,11 +1,23 @@
+import 'package:book_management/Class/UserDetails.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-class FirstLayer extends StatelessWidget {
+import 'package:fluttertoast/fluttertoast.dart';
+class FirstLayer extends StatefulWidget {
+  @override
+  _FirstLayerState createState() => _FirstLayerState();
+}
+
+class _FirstLayerState extends State<FirstLayer> {
   final Color primary = Color.fromRGBO(242, 180, 120, 0.7);
+
   final TextStyle style = TextStyle(
     color: Color(0xFF42210B),
     fontSize: 18.0,
     fontWeight: FontWeight.bold,
   );
+
+  bool toggle =false;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -18,6 +30,23 @@ class FirstLayer extends StatelessWidget {
             Ink(
               decoration: BoxDecoration(
                 color: Color.fromRGBO(251, 176, 59, 0.75),
+              ),
+            ),
+            Positioned(
+              top:40,
+              left: 25,
+              child: Container(
+                width:70,
+                child: Text(
+                    "Hey!!"+"\nNimish",
+                    overflow: TextOverflow.fade,
+                    maxLines: 2,
+                    style: TextStyle(
+                      color: Color(0xFF42210B),
+                      fontSize: 22,
+                      fontWeight: FontWeight.w700,
+                    )
+                ),
               ),
             ),
             Positioned(
@@ -54,7 +83,7 @@ class FirstLayer extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
-                  height: 60,
+                  height: 40,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -98,7 +127,7 @@ class FirstLayer extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: Text(
-                          "Feed",
+                          "Profile",
                           style: style,
                           textAlign: TextAlign.center,
                         ),
@@ -118,7 +147,7 @@ class FirstLayer extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: Text(
-                          "Activities",
+                          "Notification",
                           style: style,
                           textAlign: TextAlign.center,
                         ),
@@ -150,6 +179,34 @@ class FirstLayer extends StatelessWidget {
                           ),
                         ),
                       ),
+                    ),
+                    Switch(
+                      value: toggle,
+                      onChanged: (value){
+                        setState(() {
+                          toggle= value;
+                        });
+                        if(toggle==true){
+                          Fluttertoast.showToast(
+                            msg: "Blood Bank Notifications are turned ON",
+                            gravity: ToastGravity.BOTTOM,
+                            backgroundColor: Color(0xFF8C6239),
+                            textColor: Color.fromRGBO(251, 176, 59, 1),
+                          );
+                        }
+                        else{
+                          Fluttertoast.showToast(
+                            msg: "Blood Bank Notifications are turned OFF",
+                            gravity: ToastGravity.BOTTOM,
+                            backgroundColor: Color(0xFF8C6239),
+                            textColor: Color.fromRGBO(251, 176, 59, 1),
+                          );
+                        }
+                      },
+                      activeColor: Color(0xFF8C6239),
+                      activeTrackColor: Color(0xFF42210B),
+                      inactiveTrackColor: Color.fromRGBO(242, 180, 125, 0.9),
+                      inactiveThumbColor: Color.fromRGBO(242, 180, 120, 1),
                     ),
                   ],
                 ),
@@ -185,7 +242,27 @@ class FirstLayer extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: Text(
-                          "Help",
+                          "About Us",
+                          style: style,
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      width: 20,
+                    ),
+                    InkWell(
+                      onTap: (){},
+                      splashColor: primary,
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Text(
+                          "SignOut",
                           style: style,
                           textAlign: TextAlign.center,
                         ),
