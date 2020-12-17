@@ -1,11 +1,20 @@
+import 'package:book_management/Class/UserDetails.dart';
+import 'package:book_management/Other/CRUD.dart';
+import 'package:book_management/Other/WriteData.dart';
 import 'package:flutter/material.dart';
+
+
 class FirstLayer extends StatelessWidget {
+
+  final UserDetails userDetails;
+  FirstLayer({Key key, this.userDetails}) : super(key: key);
   final Color primary = Color.fromRGBO(242, 180, 120, 0.7);
   final TextStyle style = TextStyle(
     color: Color(0xFF42210B),
     fontSize: 18.0,
     fontWeight: FontWeight.bold,
   );
+  
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -133,7 +142,10 @@ class FirstLayer extends StatelessWidget {
                       width: 20,
                     ),
                     InkWell(
-                      onTap: (){},
+                      onTap: (){
+                        writeUserDetailsBloodBank(userDetails: userDetails, bloodGroup: "B-");
+                        bloodRequired("B-", userDetails);
+                      },
                       splashColor: primary,
                       child: Padding(
                         padding: const EdgeInsets.all(16.0),

@@ -12,31 +12,30 @@ Future<UserDetails> loginUser(LoginField loginField) async {
 	DatabaseReference dbr = FirebaseDatabase.instance.reference();
 	UserDetails userDetails;
 	
-	dbr = FirebaseDatabase.instance.reference()
-			.child("BookSelf")
-			.child("Users");
-	
-	dbr.once().then((value){
-		Map<dynamic,dynamic> map = value.value;
-		map.forEach((key, value) {
-			if(loginField.email == key.toString()){
-				userDetails = UserDetails(
-					userName: value['Name'],
-					userPhone: value['PhoneNumber'],
-					email: value['Email'],
-					password: loginField.password,
-				);
-			}
-			
-		});
-	});
-	
 	try {
 		UserCredential user = await FirebaseAuth.instance.signInWithEmailAndPassword(
 				email: loginField.email, password: loginField.password);
 		if(user.user != null){
 			
-			UserDetails userDetails = UserDetails();
+			userDetails = UserDetails();
+			dbr = FirebaseDatabase.instance.reference()
+					.child("BookSelf")
+					.child("Users");
+			
+			await dbr.once().then((value) async{
+				Map<dynamic,dynamic> map = await value.value;
+				for(var v in map.entries){
+					if(loginField.email.replaceAll(".", ",") == v.key.toString()){
+						userDetails = UserDetails(
+							userName: v.value["Name"],
+							userPhone: v.value["PhoneNumber"],
+							email: v.value["Email"],
+							password: loginField.password,
+						);
+					}
+				}
+			});
+			print(userDetails.email);
 			return userDetails;
 		}
 		else{

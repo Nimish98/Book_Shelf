@@ -35,6 +35,7 @@ dependencies:
   cupertino_icons: ^0.1.3
   matrix4_transform:
   flutter_snake_navigationbar:
+  firebase_messaging: ^7.0.3
 
 dev_dependencies:
   flutter_test:

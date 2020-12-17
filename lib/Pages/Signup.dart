@@ -3,7 +3,6 @@ import 'package:book_management/Other/AuthenticationFunctions.dart';
 import 'package:book_management/Pages/Functions.dart';
 import 'package:book_management/Pages/login.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 
 class SignUp extends StatefulWidget{
@@ -231,15 +230,8 @@ class SignUpState extends State<SignUp>{
                       }
                       if(check) {
                         Navigator.pop(context);
-                        Navigator.push(context, MaterialPageRoute(builder: (
-                            context) => Login())).then((value){
-                          Fluttertoast.showToast(
-                            msg: "Now Login Using Your Credentials",
-                            gravity: ToastGravity.BOTTOM,
-                            backgroundColor: Colors.orange,
-                            textColor: Colors.white,
-                          );
-                        });
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => Login()));
                       }
                       setState(() {
                         loading = false;

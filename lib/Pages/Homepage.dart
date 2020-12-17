@@ -38,6 +38,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   }
   @override
   void initState() {
+    print(widget.userDetails.email);
     super.initState();
     _pageController = PageController(initialPage: 0);
     readBooks().then((value){
@@ -60,12 +61,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   }
   
   @override
-  Widget popular(BuildContext context) => Container();
+  // Widget popular(BuildContext context) => Container();
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
-          FirstLayer(),
+          FirstLayer(userDetails: widget.userDetails,),
           AnimatedContainer(
             transform: Matrix4Transform()
                 .translate(x: xoffSet, y: yoffSet)
