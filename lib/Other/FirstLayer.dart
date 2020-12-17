@@ -45,7 +45,7 @@ class _FirstLayerState extends State<FirstLayer> {
               child: Container(
                 width:70,
                 child: Text(
-                    "Hey!!"+"\nNimish",
+                    "Hey!!"+"\n${widget.userDetails.userName}",
                     overflow: TextOverflow.fade,
                     maxLines: 2,
                     style: TextStyle(
