@@ -138,7 +138,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                       size: 30, color: Color(0XFF42210B)),
                                 ],
                               ),
-                              SizedBox(height: 40),
+                              SizedBox(height: 20),
                               SingleChildScrollView(
                                 scrollDirection: Axis.horizontal,
                                 child: Row(
