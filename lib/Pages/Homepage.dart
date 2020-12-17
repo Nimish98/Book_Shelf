@@ -433,7 +433,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                                 ],
                                               ),
                                               onTap: (){
-                                                Navigator.push(context,MaterialPageRoute(builder: (context) => DetailPage()));
+                                                Navigator.push(context,MaterialPageRoute(builder: (context) => DetailPage(
+                                                  books: temp[index],
+                                                )));
                                               },
                                             ),
                                           );

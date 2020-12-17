@@ -1,6 +1,5 @@
 import 'package:book_management/Class/UserDetails.dart';
 import 'package:book_management/Other/CRUD.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 

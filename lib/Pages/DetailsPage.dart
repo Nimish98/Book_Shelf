@@ -1,10 +1,16 @@
 import 'dart:ui';
 
+import 'package:book_management/Class/Books.dart';
 import 'package:book_management/Other/background.dart';
 import 'package:flutter/material.dart';
 import 'package:book_management/Pages/Homepage.dart';
 
 class DetailPage extends StatefulWidget {
+  
+  final Books books;
+
+  const DetailPage({Key key, this.books}) : super(key: key);
+  
   @override
   _DetailPageState createState() => _DetailPageState();
 }
@@ -74,7 +80,7 @@ class _DetailPageState extends State<DetailPage> {
                       decoration: BoxDecoration(
                         image: DecorationImage(
                           image: NetworkImage(
-                            "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1470023092l/31306837._SX318_.jpg",
+                            widget.books.image,
                           ),
                           fit: BoxFit.cover,
                         ),
@@ -101,7 +107,7 @@ class _DetailPageState extends State<DetailPage> {
             child: Container(
               width: 170,
               child: Text(
-                  "Book Name",
+                  widget.books.name,
                   overflow: TextOverflow.fade,
                   maxLines: 4,
                   style: TextStyle(
@@ -118,7 +124,7 @@ class _DetailPageState extends State<DetailPage> {
             child: Container(
               width: 170,
               child: Text(
-                  "Author Name",
+                  widget.books.author,
                   maxLines: 3,
                   overflow: TextOverflow.fade,
                   style: TextStyle(
@@ -136,7 +142,7 @@ class _DetailPageState extends State<DetailPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "3.4",
+                  widget.books.rating,
                   style: TextStyle(
                       fontSize: 15,
                       color: Color(0xFF42210B),
@@ -195,7 +201,7 @@ class _DetailPageState extends State<DetailPage> {
                     height: (MediaQuery.of(context).size.height/2)-40,
                     width: (MediaQuery.of(context).size.width)-20,
                     child: Text(
-                        "Physics is one of the oldest academic disciplines and, through its inclusion of astronomy, perhaps the oldest.Over much of the past two millennia, physics, chemistry, biology, and certain branches of mathematics were a part of natural philosophy, but during the Scientific Revolution in the 17th century these natural sciences emerged as unique research endeavors in their own right.Physics intersects with many interdisciplinary areas of research, such as biophysics and quantum chemistry, and the boundaries of physics are not rigidly defined.New ideas in physics often explain the fundamental mechanisms studied by other sciences and suggest new avenues of research in academic disciplines such as mathematics.",
+                        widget.books.intro,
                         maxLines: 15,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
@@ -229,7 +235,7 @@ class _DetailPageState extends State<DetailPage> {
                             ),
                           ),
                           TextSpan(
-                            text: " Price"
+                            text: widget.books.price
                                 .toString(),
                             style: TextStyle(
                               fontSize: 16,
