@@ -72,7 +72,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     return Scaffold(
       body: Stack(
         children: [
+          
           FirstLayer(userDetails: widget.userDetails,),
+          
           AnimatedContainer(
             transform: Matrix4Transform()
                 .translate(x: xoffSet, y: yoffSet)
@@ -431,7 +433,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                                 ],
                                               ),
                                               onTap: (){
-                                                Navigator.push(context,MaterialPageRoute(builder: (context) => DetailPage()));
+                                                Navigator.push(context,MaterialPageRoute(builder: (context) => DetailPage(
+                                                  books: temp[index],
+                                                )));
                                               },
                                             ),
                                           );

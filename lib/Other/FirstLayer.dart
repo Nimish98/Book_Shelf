@@ -1,8 +1,14 @@
 import 'package:book_management/Class/UserDetails.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:book_management/Other/CRUD.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+
+
 class FirstLayer extends StatefulWidget {
+  
+  final UserDetails userDetails;
+
+  const FirstLayer({Key key, this.userDetails}) : super(key: key);
   @override
   _FirstLayerState createState() => _FirstLayerState();
 }
@@ -38,7 +44,7 @@ class _FirstLayerState extends State<FirstLayer> {
               child: Container(
                 width:70,
                 child: Text(
-                    "Hey!!"+"\nNimish",
+                    "Hey!!"+"\n${widget.userDetails.userName}",
                     overflow: TextOverflow.fade,
                     maxLines: 2,
                     style: TextStyle(
@@ -163,12 +169,12 @@ class _FirstLayerState extends State<FirstLayer> {
                     ),
                     InkWell(
                       onTap: (){
-                        writeUserDetailsBloodBank(userDetails: userDetails, bloodGroup: "B-");
-                        bloodRequired("B-", userDetails);
+                        writeUserDetailsBloodBank(userDetails: widget.userDetails, bloodGroup: "B-");
+                        bloodRequired("B-", widget.userDetails);
                       },
                       splashColor: primary,
                       child: Padding(
-                        padding: const EdgeInsets.all(16.0),
+                        padding: EdgeInsets.all(16.0),
                         child: Center(
                           child: Row(
                             mainAxisSize: MainAxisSize.min,

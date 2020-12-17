@@ -134,7 +134,9 @@ class LoginState extends State<Login>{
                               if(response != null) {
                                 Navigator.pop(context);
                                 Navigator.push(context, MaterialPageRoute(
-                                    builder: (context) => HomePage()));
+                                    builder: (context) => HomePage(
+                                      userDetails: response,
+                                    )));
                               }
                             },
                             child: loading?CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(Color(0xFFC69C6D)),) :Text("LOGIN",
