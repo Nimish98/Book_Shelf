@@ -4,8 +4,8 @@ class Popular{
     this.price,
     this.rating,
     this.tittle,
-
   });
+  
   int price;
   double rating;
   String tittle;
@@ -24,6 +24,8 @@ List<Popular> popularlist = <Popular>[
   Popular(price: 221,tittle: "Engineering Mathematics",about: "",rating: 2.8),
   Popular(price: 260,tittle: "COI",about: "This Book is mainly about the the different techniques",rating: 3.9),
 ];
+
+
 class Recommended{
   Recommended({
     this.about,
