@@ -48,8 +48,8 @@ Future<UserDetails> loginUser(LoginField loginField) async {
 		Fluttertoast.showToast(
 			msg: e.message,
 			gravity: ToastGravity.BOTTOM,
-			backgroundColor: Colors.orange,
-			textColor: Colors.white,
+			backgroundColor: Color(0xFF8C6239),
+			textColor: Color.fromRGBO(251, 176, 59, 1),
 		);
 		return null;
 	}catch(e){
@@ -58,8 +58,8 @@ Future<UserDetails> loginUser(LoginField loginField) async {
 		Fluttertoast.showToast(
 			msg: e.message,
 			gravity: ToastGravity.BOTTOM,
-			backgroundColor: Colors.orange,
-			textColor: Colors.white,
+			backgroundColor: Color(0xFF8C6239),
+			textColor: Color.fromRGBO(251, 176, 59, 1),
 		);
 		return null;
 	}
@@ -78,8 +78,8 @@ Future<bool> userSignUp(UserDetails userDetails) async{
 			await Fluttertoast.showToast(
 				msg: "Registered Successful",
 				gravity: ToastGravity.BOTTOM,
-				backgroundColor: Colors.orange,
-				textColor: Colors.white,
+				backgroundColor: Color(0xFF8C6239),
+				textColor: Color.fromRGBO(251, 176, 59, 1),
 			);
 			
 			return true;
@@ -94,8 +94,8 @@ Future<bool> userSignUp(UserDetails userDetails) async{
 		Fluttertoast.showToast(
 			msg: e.message,
 			gravity: ToastGravity.BOTTOM,
-			backgroundColor: Colors.orange,
-			textColor: Colors.white,
+			backgroundColor: Color(0xFF8C6239),
+			textColor: Color.fromRGBO(251, 176, 59, 1),
 		);
 		return false;
 		
@@ -105,8 +105,8 @@ Future<bool> userSignUp(UserDetails userDetails) async{
 		Fluttertoast.showToast(
 			msg: e.message,
 			gravity: ToastGravity.BOTTOM,
-			backgroundColor: Colors.orange,
-			textColor: Colors.white,
+			backgroundColor: Color(0xFF8C6239),
+			textColor: Color.fromRGBO(251, 176, 59, 1),
 		);
 		return false;
 	}

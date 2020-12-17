@@ -1,3 +1,4 @@
+import 'package:book_management/Pages/DetailsPage.dart';
 import 'package:book_management/Pages/Homepage.dart';
 import 'package:book_management/Pages/Loginsignup.dart';
 import 'package:flutter/material.dart';
@@ -20,8 +21,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     firebaseInit();
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-        statusBarColor: Color.fromRGBO(242, 180, 120, 1),
+    SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(
+        statusBarColor: Color.fromRGBO(242, 180, 125, 0.8),
       statusBarIconBrightness: Brightness.dark,
     ));
     return MaterialApp(
