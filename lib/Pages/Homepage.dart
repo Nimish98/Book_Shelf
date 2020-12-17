@@ -72,7 +72,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     return Scaffold(
       body: Stack(
         children: [
+          
           FirstLayer(userDetails: widget.userDetails,),
+          
           AnimatedContainer(
             transform: Matrix4Transform()
                 .translate(x: xoffSet, y: yoffSet)
