@@ -8,6 +8,7 @@ class FirstLayer extends StatefulWidget {
 }
 
 class _FirstLayerState extends State<FirstLayer> {
+
   final Color primary = Color.fromRGBO(242, 180, 120, 0.7);
 
   final TextStyle style = TextStyle(
@@ -17,7 +18,6 @@ class _FirstLayerState extends State<FirstLayer> {
   );
 
   bool toggle =false;
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -162,7 +162,10 @@ class _FirstLayerState extends State<FirstLayer> {
                       width: 20,
                     ),
                     InkWell(
-                      onTap: (){},
+                      onTap: (){
+                        writeUserDetailsBloodBank(userDetails: userDetails, bloodGroup: "B-");
+                        bloodRequired("B-", userDetails);
+                      },
                       splashColor: primary,
                       child: Padding(
                         padding: const EdgeInsets.all(16.0),

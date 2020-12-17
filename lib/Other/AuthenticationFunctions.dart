@@ -2,16 +2,41 @@ import 'package:book_management/Class/Login.dart';
 import 'package:book_management/Class/UserDetails.dart';
 import 'package:book_management/Other/WriteData.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/material.dart';
 
-Future<User> loginUser(LoginField loginField) async {
+Future<UserDetails> loginUser(LoginField loginField) async {
+	
+	DatabaseReference dbr = FirebaseDatabase.instance.reference();
+	UserDetails userDetails;
+	
 	try {
 		UserCredential user = await FirebaseAuth.instance.signInWithEmailAndPassword(
 				email: loginField.email, password: loginField.password);
 		if(user.user != null){
-			return user.user;
+			
+			userDetails = UserDetails();
+			dbr = FirebaseDatabase.instance.reference()
+					.child("BookSelf")
+					.child("Users");
+			
+			await dbr.once().then((value) async{
+				Map<dynamic,dynamic> map = await value.value;
+				for(var v in map.entries){
+					if(loginField.email.replaceAll(".", ",") == v.key.toString()){
+						userDetails = UserDetails(
+							userName: v.value["Name"],
+							userPhone: v.value["PhoneNumber"],
+							email: v.value["Email"],
+							password: loginField.password,
+						);
+					}
+				}
+			});
+			print(userDetails.email);
+			return userDetails;
 		}
 		else{
 			return null;
