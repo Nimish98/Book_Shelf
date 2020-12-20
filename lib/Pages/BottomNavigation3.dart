@@ -12,7 +12,7 @@ class _OrganisationState extends State<Organisation> {
     return Stack(
       children: [
         backGround(context),
-        Text("hey3"),
+        Center(child: Text("hey3")),
       ],
     );
   }
