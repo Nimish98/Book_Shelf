@@ -12,7 +12,7 @@ class _FavouritesState extends State<Favourites> {
     return Stack(
       children: [
         backGround(context),
-        Text("hey2"),
+        Center(child: Text("hey2")),
       ],
     );
   }

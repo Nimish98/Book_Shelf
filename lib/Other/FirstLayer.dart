@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:book_management/Class/UserDetails.dart';
 import 'package:book_management/Other/CRUD.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:image_picker/image_picker.dart';
 
 
 class FirstLayer extends StatefulWidget {
@@ -14,7 +17,7 @@ class FirstLayer extends StatefulWidget {
 }
 
 class _FirstLayerState extends State<FirstLayer> {
-
+  File userImage;
   final Color primary = Color.fromRGBO(242, 180, 120, 0.7);
 
   final TextStyle style = TextStyle(
@@ -24,6 +27,49 @@ class _FirstLayerState extends State<FirstLayer> {
   );
 
   bool toggle =false;
+  // List<String> popupMenu = [
+  //   "Take Photo",
+  //   "Upload from Gallery",
+  // ];
+
+  // void choiceAction(String choice){
+  //   if(choice == "Take Photo"){
+  //     _pickImageCamera();
+  //   }
+  //   else{
+  //     _pickImageGallery();
+  //   }
+  // }
+  // void _pickImageCamera() async{
+  //   final picker = ImagePicker();
+  //   final pickedImage = await picker.getImage(source: ImageSource.camera);
+  //   final pickedImageFile = File(pickedImage.path);
+  //   setState(() {
+  //     userImage=pickedImageFile;
+  //   });
+  // }
+  void _pickImageGallery() async{
+    final picker = ImagePicker();
+    final pickedImage = await picker.getImage(source: ImageSource.gallery);
+    final pickedImageFile = File(pickedImage.path);
+    setState(() {
+      userImage=pickedImageFile;
+    });
+  }
+  // Widget menu(BuildContext context){
+  //   return DropdownButton<String>(
+  //     icon: null,
+  //     underline: null,
+  //     onChanged: choiceAction,
+  //     dropdownColor: Color.fromRGBO(242, 180, 120, 0.7),
+  //     items: popupMenu.map((String choice){
+  //       return DropdownMenuItem<String>(
+  //         value: choice,
+  //         child: Text(choice, style: TextStyle(fontSize:10, color: Color(0xFF42210B))),
+  //       );
+  //     }).toList(),
+  //   );
+  // }
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -97,26 +143,27 @@ class _FirstLayerState extends State<FirstLayer> {
                     SizedBox(
                       width: 20,
                     ),
-                    Center(
-                      child: Container(
-                        padding: const EdgeInsets.all(8.0),
-                        height: 100,
-                        width: 100,
-                        decoration: BoxDecoration(
-                            color: Color(0xFF8C6239),
-                            borderRadius: BorderRadius.circular(50.0)
-                        ),
+                    GestureDetector(
+                      child: Center(
                         child: Container(
-                          clipBehavior: Clip.antiAlias,
+                          padding: const EdgeInsets.all(8.0),
+                          height: 110,
+                          width: 110,
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20.0),
-                              image: DecorationImage(
-                                image: AssetImage("images/icon.png"),
-                                fit: BoxFit.cover,
-                              )
+                              color: Color(0xFF8C6239),
+                              borderRadius: BorderRadius.circular(70.0)
+                          ),
+                          child: CircleAvatar(
+                            backgroundColor: Colors.transparent,
+                            backgroundImage: userImage!=null?FileImage(userImage):AssetImage("images/icon.png"),
+                            radius: 10,
                           ),
                         ),
                       ),
+                      onTap: (){
+                        _pickImageGallery();
+                        print("image");
+                      },
                     ),
                   ],
                 ),
@@ -287,3 +334,4 @@ class _FirstLayerState extends State<FirstLayer> {
     );
   }
 }
+

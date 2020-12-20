@@ -15,7 +15,7 @@ class DetailPage extends StatefulWidget {
   _DetailPageState createState() => _DetailPageState();
 }
 
-class _DetailPageState extends State<DetailPage> {
+class _DetailPageState extends State<DetailPage>{
 
   @override
   Widget build(BuildContext context) {
@@ -124,7 +124,7 @@ class _DetailPageState extends State<DetailPage> {
             child: Container(
               width: 170,
               child: Text(
-                  widget.books.author,
+                  "By\n"+widget.books.author,
                   maxLines: 3,
                   overflow: TextOverflow.fade,
                   style: TextStyle(
