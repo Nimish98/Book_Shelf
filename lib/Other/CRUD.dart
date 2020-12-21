@@ -24,7 +24,7 @@ Future<List<Books>> readBooks() async{
 }
 
 
-Future<bool> writeUserDetailsBloodBank({UserDetails userDetails, String bloodGroup}) async{
+Future<bool> writeUserDetailsBloodBank(UserDetails userDetails, String bloodGroup) async{
 	FirebaseMessaging firebaseMessaging = FirebaseMessaging();
 	try {
 		String fcm = await firebaseMessaging.getToken();

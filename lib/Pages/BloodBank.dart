@@ -1,20 +1,32 @@
+import 'package:book_management/Class/UserDetails.dart';
+import 'package:book_management/Other/CRUD.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 class BloodBank extends StatefulWidget {
+  final UserDetails userDetails;
+
+  const BloodBank({Key key, this.userDetails}) : super(key: key);
   @override
   _BloodBankState createState() => _BloodBankState();
 }
 
 class _BloodBankState extends State<BloodBank> {
+  
   Future<bool> _willPopCallback() async {
     setState(() {
       statusBar=Color.fromRGBO(242, 180, 125, 0.8);
     });
     return true;
   }
+  
+  GlobalKey<FormState> key = GlobalKey<FormState>();
+  String bloodGroup ;
   bool donor=false;
-  bool reciever=false;
+  bool reciever=true;
   Color statusBar=Color(0xFF989898);
+  
+  
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
@@ -97,21 +109,33 @@ class _BloodBankState extends State<BloodBank> {
                     height: 58,
                     child: Padding(
                       padding: EdgeInsets.only(top: 1),
-                      child: TextFormField(
-                        cursorColor: Color(0xFFFF3D30),
-                        textInputAction: TextInputAction.next,
-                        style: TextStyle(fontSize: 16),
-                        decoration: InputDecoration(
-                          focusColor: Colors.black,
-                          border: InputBorder.none,
-                          contentPadding: EdgeInsets.symmetric(
-                            vertical: 17.0,
-                            horizontal:26,
+                      child: Form(
+                        key: key,
+                        child: TextFormField(
+                          onChanged: (value){
+                            bloodGroup = value;
+                          },
+                          validator: (value){
+                            if(value.isEmpty){
+                              return "Please Enter Your Blood Group";
+                            }
+                            return null;
+                          },
+                          cursorColor: Color(0xFFFF3D30),
+                          textInputAction: TextInputAction.next,
+                          style: TextStyle(fontSize: 16),
+                          decoration: InputDecoration(
+                            focusColor: Colors.black,
+                            border: InputBorder.none,
+                            contentPadding: EdgeInsets.symmetric(
+                              vertical: 17.0,
+                              horizontal:26,
+                            ),
+                            hintText:"Enter Your Blood Group Here",
+                            hintStyle: TextStyle(color: Color(0xFFFF3D30),fontSize: 16),
+                            fillColor:  Color(0xFFCCCCCC),
+                            filled: false,
                           ),
-                          hintText:"Enter Your Blood Group Here",
-                          hintStyle: TextStyle(color: Color(0xFFFF3D30),fontSize: 16),
-                          fillColor:  Color(0xFFCCCCCC),
-                          filled: false,
                         ),
                       ),
                     ),
@@ -123,7 +147,16 @@ class _BloodBankState extends State<BloodBank> {
                     height: 45,
                     child: RaisedButton(
                       onPressed: () {
-                        print("Blood Group");
+                        if(key.currentState.validate()) {
+                          key.currentState.save();
+                          if (reciever) {
+                            writeUserDetailsBloodBank(widget.userDetails, bloodGroup);
+                          }
+                          
+                          if(donor){
+                            bloodRequired(bloodGroup, widget.userDetails);
+                          }
+                        }
                       },
                       elevation: 12,
                       child: Text(
