@@ -57,6 +57,9 @@ class _BloodBankState extends State<BloodBank> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      Spacer(
+                        flex: 2,
+                      ),
                       Text(
                         'DONOR',
                         style: TextStyle(
@@ -76,6 +79,9 @@ class _BloodBankState extends State<BloodBank> {
                         },
                         activeColor: Color(0xFFFF3D30),
                       ),
+                      Spacer(
+                        flex: 1,
+                      ),
                       Text(
                         'ACCEPTOR',
                         style: TextStyle(
@@ -94,6 +100,9 @@ class _BloodBankState extends State<BloodBank> {
                           });
                         },
                         activeColor: Color(0xFFFF3D30),
+                      ),
+                      Spacer(
+                        flex: 1,
                       )
                     ],
                   ),
