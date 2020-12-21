@@ -42,9 +42,6 @@ class _BloodBankState extends State<BloodBank> {
                   Spacer(
                     flex: 1,
                   ),
-                  // SizedBox(
-                  //   height: 15,
-                  // ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -91,9 +88,6 @@ class _BloodBankState extends State<BloodBank> {
                   Spacer(
                     flex: 1,
                   ),
-                  // SizedBox(
-                  //   height: 20,
-                  // ),
                   Container(
                     decoration: BoxDecoration(
                         color: Color(0xFFCCCCCC),
