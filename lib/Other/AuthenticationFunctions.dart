@@ -3,6 +3,7 @@ import 'package:book_management/Class/UserDetails.dart';
 import 'package:book_management/Other/WriteData.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +19,15 @@ Future<UserDetails> loginUser(LoginField loginField) async {
 		if(user.user != null){
 			
 			userDetails = UserDetails();
+			String image;
+			try {
+				image = await FirebaseStorage.instance.ref()
+						.child("UserImage")
+						.child(loginField.email)
+						.getDownloadURL();
+			}catch(e){
+			
+			}
 			dbr = FirebaseDatabase.instance.reference()
 					.child("BookSelf")
 					.child("Users");
@@ -31,6 +41,7 @@ Future<UserDetails> loginUser(LoginField loginField) async {
 							userPhone: v.value["PhoneNumber"],
 							email: v.value["Email"],
 							password: loginField.password,
+							image: image,
 						);
 					}
 				}

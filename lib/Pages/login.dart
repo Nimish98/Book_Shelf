@@ -130,7 +130,9 @@ class LoginState extends State<Login>{
                                 loading = true;
                               });
                               loginField = LoginField(email, password);
-                              var response = await loginUser(loginField);
+                              var response = await loginUser(loginField).catchError(( e){
+                                print(e.stackTrace);
+                              });
                               if(response != null) {
                                 Navigator.pop(context);
                                 Navigator.push(context, MaterialPageRoute(

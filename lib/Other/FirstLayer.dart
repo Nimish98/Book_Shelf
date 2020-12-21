@@ -1,5 +1,5 @@
 import 'dart:io';
-
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:book_management/Class/UserDetails.dart';
 import 'package:book_management/Other/CRUD.dart';
 import 'package:flutter/material.dart';
@@ -27,49 +27,23 @@ class _FirstLayerState extends State<FirstLayer> {
   );
 
   bool toggle =false;
-  // List<String> popupMenu = [
-  //   "Take Photo",
-  //   "Upload from Gallery",
-  // ];
-
-  // void choiceAction(String choice){
-  //   if(choice == "Take Photo"){
-  //     _pickImageCamera();
-  //   }
-  //   else{
-  //     _pickImageGallery();
-  //   }
-  // }
-  // void _pickImageCamera() async{
-  //   final picker = ImagePicker();
-  //   final pickedImage = await picker.getImage(source: ImageSource.camera);
-  //   final pickedImageFile = File(pickedImage.path);
-  //   setState(() {
-  //     userImage=pickedImageFile;
-  //   });
-  // }
+  
+  
   void _pickImageGallery() async{
     final picker = ImagePicker();
     final pickedImage = await picker.getImage(source: ImageSource.gallery);
     final pickedImageFile = File(pickedImage.path);
+    FirebaseStorage firebaseStorage =FirebaseStorage.instance;
+    Reference ref = firebaseStorage.ref().child("UserImage").child(widget.userDetails.email.toString());
+    final UploadTask uploadTask = ref.putFile(
+        pickedImageFile,
+    );
+    
     setState(() {
       userImage=pickedImageFile;
     });
   }
-  // Widget menu(BuildContext context){
-  //   return DropdownButton<String>(
-  //     icon: null,
-  //     underline: null,
-  //     onChanged: choiceAction,
-  //     dropdownColor: Color.fromRGBO(242, 180, 120, 0.7),
-  //     items: popupMenu.map((String choice){
-  //       return DropdownMenuItem<String>(
-  //         value: choice,
-  //         child: Text(choice, style: TextStyle(fontSize:10, color: Color(0xFF42210B))),
-  //       );
-  //     }).toList(),
-  //   );
-  // }
+  
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -155,12 +129,12 @@ class _FirstLayerState extends State<FirstLayer> {
                           ),
                           child: CircleAvatar(
                             backgroundColor: Colors.transparent,
-                            backgroundImage: userImage!=null?FileImage(userImage):AssetImage("images/icon.png"),
+                            backgroundImage: widget.userDetails.image!=null?FileImage(userImage):AssetImage("images/icon.png"),
                             radius: 10,
                           ),
                         ),
                       ),
-                      onTap: (){
+                      onTap: () {
                         _pickImageGallery();
                         print("image");
                       },
