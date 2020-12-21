@@ -3,10 +3,10 @@ import 'dart:ui';
 import 'package:book_management/Class/Books.dart';
 import 'package:book_management/Other/background.dart';
 import 'package:flutter/material.dart';
-import 'package:book_management/Pages/Homepage.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class DetailPage extends StatefulWidget {
-  
+
   final Books books;
 
   const DetailPage({Key key, this.books}) : super(key: key);
@@ -16,6 +16,7 @@ class DetailPage extends StatefulWidget {
 }
 
 class _DetailPageState extends State<DetailPage>{
+  IconData fav=Icons.favorite_border;
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +48,7 @@ class _DetailPageState extends State<DetailPage>{
                     },
                   ),
                   Spacer(
-                    flex: 1,
+                    flex: 4,
                   ),
                   Text(
                     "FICTION",
@@ -61,7 +62,41 @@ class _DetailPageState extends State<DetailPage>{
                     ),
                   ),
                   Spacer(
-                    flex: 2,
+                    flex: 4,
+                  ),
+                  IconButton(
+                      icon: Icon(
+                          fav,
+                        size: 25,
+                        color: Color(0xFF42210B),
+                      ),
+                      onPressed: (){
+                        if(fav==Icons.favorite_border){
+                          setState(() {
+                            fav = Icons.favorite;
+                          });
+                          Fluttertoast.showToast(
+                            msg: "Book added to favourites",
+                            gravity: ToastGravity.BOTTOM,
+                            backgroundColor: Color(0xFF8C6239),
+                            textColor: Color.fromRGBO(251, 176, 59, 1),
+                          );
+                        }
+                        else{
+                          setState(() {
+                            fav=Icons.favorite_border;
+                          });
+                          Fluttertoast.showToast(
+                            msg: "Book removed from favourites",
+                            gravity: ToastGravity.BOTTOM,
+                            backgroundColor: Color(0xFF8C6239),
+                            textColor: Color.fromRGBO(251, 176, 59, 1),
+                          );
+                        }
+                      }
+                  ),
+                  Spacer(
+                    flex: 1,
                   ),
                 ],
               ),
