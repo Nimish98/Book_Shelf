@@ -39,6 +39,8 @@ dependencies:
   firebase_messaging: ^7.0.3
   image_picker:
   intro_views_flutter:
+  shared_preferences:
+  flare_flutter:
 
 dev_dependencies:
   flutter_test:
@@ -79,6 +81,10 @@ flutter:
     - images/PG2.png
     - images/PG3.png
     - images/PG4.png
+    - images/Asset.png
+    - images/Blood.png
+    - images/bloodloader.flr
+    - images/bookshelfloader.flr
 #    - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
