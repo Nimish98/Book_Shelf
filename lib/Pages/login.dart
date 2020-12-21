@@ -1,5 +1,6 @@
 import 'package:book_management/Class/Login.dart';
 import 'package:book_management/Other/AuthenticationFunctions.dart';
+import 'package:book_management/Other/Loader.dart';
 import 'package:book_management/Pages/Functions.dart';
 import 'package:book_management/Pages/Signup.dart';
 import 'package:flutter/gestures.dart';
@@ -129,9 +130,14 @@ class LoginState extends State<Login>{
                               setState(() {
                                 loading = true;
                               });
+                              if(loading==true)showDialog(
+                                context: context,
+                                builder: (BuildContext context)=>BookShelfLoader(),
+                              );
                               loginField = LoginField(email, password);
                               var response = await loginUser(loginField);
                               if(response != null) {
+                                Navigator.pop(context);
                                 Navigator.pop(context);
                                 Navigator.push(context, MaterialPageRoute(
                                     builder: (context) => HomePage(
@@ -139,7 +145,7 @@ class LoginState extends State<Login>{
                                     )));
                               }
                             },
-                            child: loading?CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(Color(0xFFC69C6D)),) :Text("LOGIN",
+                            child: Text("LOGIN",
                               style: TextStyle(fontSize: 21,fontFamily: "Myriad"),
                             ),
                           ),

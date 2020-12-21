@@ -8,7 +8,7 @@ InputDecoration inputDecoration({String hintText}){
       horizontal:26,
     ),
     hintText:hintText,
-    hintStyle: TextStyle(color: Color(0xFF42210B),fontSize: 16, fontFamily: "Avenir LT Std 45 Book"),
+    hintStyle: TextStyle(color: Color(0xFF42210B),fontSize: 16),
     fillColor: Color(0xFFC69C6D),
     filled: false,
   );

@@ -1,5 +1,6 @@
 import 'package:book_management/Class/UserDetails.dart';
 import 'package:book_management/Other/AuthenticationFunctions.dart';
+import 'package:book_management/Other/Loader.dart';
 import 'package:book_management/Pages/Functions.dart';
 import 'package:book_management/Pages/login.dart';
 import 'package:flutter/material.dart';
@@ -202,6 +203,10 @@ class SignUpState extends State<SignUp>{
                         setState(() {
                           loading= true;
                         });
+                        if(loading==true)showDialog(
+                          context: context,
+                          builder: (BuildContext context)=>BookShelfLoader(),
+                        );
                         userDetails = UserDetails(userName: userName, userPhone: userPhone, email: email, password: password);
                         check = await userSignUp(userDetails);
                       }
@@ -214,7 +219,7 @@ class SignUpState extends State<SignUp>{
                         loading = false;
                       });
                     },
-                    child: loading? CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(Color(0xFFC69C6D)),):Text("SIGNUP",
+                    child:Text("SIGNUP",
                       style: TextStyle(fontSize: 21,fontFamily: "Myriad"),
                     ),
                   ),
