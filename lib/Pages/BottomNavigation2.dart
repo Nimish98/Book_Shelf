@@ -1,10 +1,8 @@
 import 'dart:ui';
-
 import 'package:book_management/Class/Books.dart';
 import 'package:book_management/Class/UserDetails.dart';
 import 'package:book_management/Other/CRUD.dart';
 import 'package:book_management/Pages/DetailsPage.dart';
-import 'package:book_management/Pages/Functions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:book_management/Other/background.dart';
