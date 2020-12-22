@@ -29,6 +29,7 @@ dependencies:
   fluttertoast: ^7.1.5
   firebase_database: ^4.3.0
   firebase_storage: ^5.2.0
+  file_picker: ^2.1.4
 
 
   # The following adds the Cupertino Icons font to your application.

@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:book_management/Class/Books.dart';
 import 'package:book_management/Class/UserDetails.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/services.dart';
 
 Future<List<Books>> readBooks() async{
@@ -155,5 +158,33 @@ Future<List<Books>> readFavBooks(UserDetails userDetails) async{
 	}catch(e){
 		print(e);
 		return null;
+	}
+}
+
+Future<bool> postSellExchange(File file, String bookName, String action, UserDetails userDetails) async{
+	String location;
+	try{
+		
+		Reference ref = FirebaseStorage.instance.ref().child("BookSelf").child(bookName);
+		await ref.putFile(file);
+		location = await ref.getDownloadURL();
+		
+		FirebaseDatabase.instance.reference()
+				.child("BookSelf")
+				.child("Sell,Exc")
+		    .push()
+				.set({
+			"bookName":bookName,
+			"location": location,
+			"action": action,
+			"PostedBy": userDetails.userName,
+		
+		});
+		
+		return true;
+	}catch(e){
+		print("error");
+		print(e);
+		return false;
 	}
 }

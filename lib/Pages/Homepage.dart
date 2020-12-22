@@ -733,7 +733,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     Stack(
                       children: [
                         backGround(context),
-                        Selling(),
+                        Selling(
+                          userDetails: widget.userDetails,
+                        ),
                       ],
                     ),
                   ],
@@ -768,7 +770,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
                   BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'Favourite'),
                   BottomNavigationBarItem(icon: Icon(Icons.group), label: 'Organisation'),
-                  BottomNavigationBarItem(icon: Icon(Icons.store), label: 'Buy/Sell/Exchange')
+                  BottomNavigationBarItem(icon: Icon(Icons.store), label: 'Buy/Sell/Exchange',)
                 ],
               ),
             ),
