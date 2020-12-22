@@ -166,26 +166,26 @@ class _FirstLayerState extends State<FirstLayer> {
                     ),
                   ],
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      width: 20,
-                    ),
-                    InkWell(
-                      onTap: (){},
-                      splashColor: primary,
-                      child: Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Text(
-                          "Notification",
-                          style: style,
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.start,
+                //   children: [
+                //     SizedBox(
+                //       width: 20,
+                //     ),
+                //     InkWell(
+                //       onTap: (){},
+                //       splashColor: primary,
+                //       child: Padding(
+                //         padding: const EdgeInsets.all(16.0),
+                //         child: Text(
+                //           "Notification",
+                //           style: style,
+                //           textAlign: TextAlign.center,
+                //         ),
+                //       ),
+                //     ),
+                //   ],
+                // ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
