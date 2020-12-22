@@ -18,7 +18,6 @@ class LoginState extends State<Login>{
   LoginField loginField;
   String email, password;
   bool loading = false;
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -144,6 +143,12 @@ class LoginState extends State<Login>{
                                       userDetails: response,
                                     )));
                               }
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return dialog(context);
+                                },
+                              );
                             },
                             child: Text("LOGIN",
                               style: TextStyle(fontSize: 21,fontFamily: "Myriad"),
