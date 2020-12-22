@@ -2,8 +2,6 @@ import 'dart:ui';
 import 'package:book_management/Class/Books.dart';
 import 'package:book_management/Class/UserDetails.dart';
 import 'package:book_management/Other/CRUD.dart';
-import 'package:book_management/OpeningScreen.dart';
-import 'package:book_management/Other/List.dart';
 import 'package:book_management/Pages/BottomNavigation2.dart';
 import 'package:book_management/Pages/BottomNavigation3.dart';
 import 'package:book_management/Pages/BottomNavigation4.dart';
@@ -47,6 +45,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   void initState() {
     print(widget.userDetails.email);
     super.initState();
+    
     _pageController = PageController(initialPage: 0);
     readBooks().then((value){
       setState(() {
@@ -727,7 +726,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         ),
                       ],
                     ),
-                    Favourites(),
+                    Favourites(
+                      userDetails: widget.userDetails,
+                    ),
                     Organisation(),
                     Stack(
                       children: [

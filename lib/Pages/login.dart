@@ -134,7 +134,9 @@ class LoginState extends State<Login>{
                                 builder: (BuildContext context)=>BookShelfLoader(),
                               );
                               loginField = LoginField(email, password);
-                              var response = await loginUser(loginField);
+                              var response = await loginUser(loginField).catchError(( e){
+                                print(e.stackTrace);
+                              });
                               if(response != null) {
                                 Navigator.pop(context);
                                 Navigator.pop(context);
