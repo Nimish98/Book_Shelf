@@ -24,7 +24,7 @@ class _DetailPageState extends State<DetailPage>{
   @override
   void initState() {
     super.initState();
-    fav =  widget.books.fav?Icons.favorite:Icons.favorite_border;
+    fav =  widget.books.fav?Icons.favorite_border:Icons.favorite;
   }
 
   @override
@@ -60,7 +60,7 @@ class _DetailPageState extends State<DetailPage>{
                     flex: 4,
                   ),
                   Text(
-                    widget.books.genre,
+                    widget.books.genre.toUpperCase(),
                     style: TextStyle(
                         fontSize: 25,
                         color: Color(0xFF42210B),
