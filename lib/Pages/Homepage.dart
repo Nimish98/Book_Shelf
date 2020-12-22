@@ -44,6 +44,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   void initState() {
     print(widget.userDetails.email);
     super.initState();
+    
     _pageController = PageController(initialPage: 0);
     readBooks().then((value){
       setState(() {
@@ -432,6 +433,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                             onTap: (){
                                               Navigator.push(context,MaterialPageRoute(builder: (context) => DetailPage(
                                                 books: temp[index],
+                                                userDetails: widget.userDetails,
                                               )));
                                             },
                                           ),
@@ -447,7 +449,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         ),
                       ],
                     ),
-                    Favourites(),
+                    Favourites(
+                      userDetails: widget.userDetails,
+                    ),
                     Organisation(),
                     Stack(
                       children: [

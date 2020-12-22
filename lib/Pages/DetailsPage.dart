@@ -1,6 +1,8 @@
 import 'dart:ui';
 
 import 'package:book_management/Class/Books.dart';
+import 'package:book_management/Class/UserDetails.dart';
+import 'package:book_management/Other/CRUD.dart';
 import 'package:book_management/Other/background.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -8,15 +10,22 @@ import 'package:fluttertoast/fluttertoast.dart';
 class DetailPage extends StatefulWidget {
 
   final Books books;
+  final UserDetails userDetails;
 
-  const DetailPage({Key key, this.books}) : super(key: key);
+  const DetailPage({Key key, this.books, this.userDetails}) : super(key: key);
   
   @override
   _DetailPageState createState() => _DetailPageState();
 }
 
 class _DetailPageState extends State<DetailPage>{
-  IconData fav=Icons.favorite_border;
+  IconData fav= Icons.favorite_border;
+  
+  @override
+  void initState() {
+    super.initState();
+    fav =  widget.books.fav?Icons.favorite:Icons.favorite_border;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +60,7 @@ class _DetailPageState extends State<DetailPage>{
                     flex: 4,
                   ),
                   Text(
-                    "FICTION",
+                    widget.books.genre,
                     style: TextStyle(
                         fontSize: 25,
                         color: Color(0xFF42210B),
@@ -75,6 +84,7 @@ class _DetailPageState extends State<DetailPage>{
                           setState(() {
                             fav = Icons.favorite;
                           });
+                          favBooks(widget.books, widget.userDetails.email);
                           Fluttertoast.showToast(
                             msg: "Book added to favourites",
                             gravity: ToastGravity.BOTTOM,
