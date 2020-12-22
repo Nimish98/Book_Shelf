@@ -12,7 +12,12 @@ class _OrganisationState extends State<Organisation> {
     return Stack(
       children: [
         backGround(context),
-        Center(child: Text("hey3")),
+        Image.asset(
+            "images/org.png",
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          fit: BoxFit.cover,
+        ),
       ],
     );
   }

@@ -54,8 +54,8 @@ class _BookShelfLoaderState extends State<BookShelfLoader> {
         elevation: 0,
         child: Center(
           child: Container(
-            height: 150,
-            width: 150,
+            height: 180,
+            width: 180,
             color: Colors.transparent,
             child: FlareActor(
               "images/bookshelfloader.flr",
