@@ -1,3 +1,6 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
 class Popular{
   Popular({
     this.about,
@@ -75,3 +78,40 @@ List<NewReleases>NewReleaseslist = <NewReleases>[
   NewReleases(price: 221,tittle: "New Release 9",about: "This Book is mainly about the the different techniques",rating: 3.4),
   NewReleases(price: 260,tittle: "New Release 10",about: "This Book is mainly about the the different techniques",rating: 3.4),
 ];
+
+class Section{
+  IconData icon;
+  String s;
+  Section({this.icon,this.s});
+}
+
+List<Section>verticalList=<Section>[
+  Section(
+    icon: Icons.school,
+    s: "Education"
+  ),
+  Section(
+    icon: Icons.book,
+    s: "Literature",
+  ),
+  Section(
+    icon: Icons.wb_sunny_rounded,
+    s: "Science",
+  ),
+  Section(
+    icon: Icons.book_outlined,
+    s: "Fiction",
+  ),
+];
+// class Book{
+//   Book({this.about,
+//   this.price,
+//   this.rating,
+//   this.tittle,
+// });
+// int price;
+// String about;
+// double rating;
+// String tittle;
+// }
+
