@@ -24,7 +24,7 @@ class _DetailPageState extends State<DetailPage>{
   @override
   void initState() {
     super.initState();
-    fav =  widget.books.fav?Icons.favorite_border:Icons.favorite;
+    fav =  widget.books.fav?Icons.favorite:Icons.favorite_border;
   }
 
   @override
@@ -79,7 +79,7 @@ class _DetailPageState extends State<DetailPage>{
                         size: 25,
                         color: Color(0xFF42210B),
                       ),
-                      onPressed: (){
+                      onPressed: () {
                         if(fav==Icons.favorite_border){
                           setState(() {
                             fav = Icons.favorite;
@@ -96,6 +96,7 @@ class _DetailPageState extends State<DetailPage>{
                           setState(() {
                             fav=Icons.favorite_border;
                           });
+                          removeFavBook(widget.books, widget.userDetails.email);
                           Fluttertoast.showToast(
                             msg: "Book removed from favourites",
                             gravity: ToastGravity.BOTTOM,

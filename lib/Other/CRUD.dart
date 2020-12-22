@@ -12,6 +12,7 @@ Future<List<Books>> readBooks() async{
 	DatabaseReference read = dbr
 			.child("BookSelf")
 			.child("Books");
+	
 	await dbr.child("BookSelf").child("UsersFav").once().then((value) async{
 		Map<dynamic,dynamic> map = await value.value;
 		
@@ -20,6 +21,8 @@ Future<List<Books>> readBooks() async{
 				fav.add(v2['book']);
 			}
 		}
+	}).catchError((e){
+		print(e);
 	});
 	
 	await read.once().then((DataSnapshot snapshot) async{
@@ -88,12 +91,27 @@ Future<bool> favBooks(Books books, String email) async{
 				.child("BookSelf")
 				.child("UsersFav")
 				.child(email.replaceAll(".", ","))
-				.push()
+				.child(books.name.replaceAll(" ", ""))
 				.set({
 			"genre":books.genre,
 			"book":books.name,
 		});
 		
+		return true;
+	}catch(e){
+		print(e);
+		return false;
+	}
+}
+
+Future<bool> removeFavBook(Books books, String email) async{
+	try{
+		await FirebaseDatabase.instance.reference()
+				.child("BookSelf")
+				.child("UsersFav")
+				.child(email.replaceAll(".", ","))
+				.child(books.name.replaceAll(" ", ""))
+				.remove();
 		return true;
 	}catch(e){
 		print(e);

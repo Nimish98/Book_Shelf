@@ -7,7 +7,6 @@ import 'package:book_management/Pages/BottomNavigation2.dart';
 import 'package:book_management/Pages/BottomNavigation3.dart';
 import 'package:book_management/Pages/BottomNavigation4.dart';
 import 'package:book_management/Pages/DetailsPage.dart';
-import 'package:book_management/Pages/Functions.dart';
 import 'package:flutter/material.dart';
 import 'package:book_management/Other/background.dart';
 import 'package:matrix4_transform/matrix4_transform.dart';
@@ -68,7 +67,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   }
   
   @override
-  // Widget popular(BuildContext context) => Container();
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
