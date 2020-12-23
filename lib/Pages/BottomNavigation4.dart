@@ -181,7 +181,7 @@ class _SellingState extends State<Selling> {
                                             flex: 1,
                                           ),
                                           Text(
-                                            map.values.elementAt(i)["action"],
+                                            map.values.elementAt(i)["action"] == "ex"?"Exchange":"Sell",
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                               fontSize: 15,

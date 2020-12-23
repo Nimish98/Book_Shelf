@@ -306,9 +306,9 @@ class _DetailPageState extends State<DetailPage>{
             alignment: Alignment.bottomCenter,
             child: RaisedButton(
                 onPressed: (){
-                  PDFViewer(
-                    pdf: widget.books.location,
-                  );
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>PDFViewer(
+                    pdf: widget.books.location,),
+                  ));
                 },
               elevation: 10,
                 child: Text(
