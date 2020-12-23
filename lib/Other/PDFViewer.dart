@@ -20,12 +20,17 @@ class _PDFViewerState extends State<PDFViewer> {
 	
 	Future<String> getFile() async{
 		http.Response response;
-		response = await http.get(widget.pdf);
-		
-		var dir = await getTemporaryDirectory();
-		File file = File(dir.path + "/data.pdf");
-		await file.writeAsBytes(response.bodyBytes,flush: true);
-		return file.path;
+		try {
+			response = await http.get(widget.pdf);
+			
+			var dir = await getTemporaryDirectory();
+			File file = File(dir.path + "/data.pdf");
+			await file.writeAsBytes(response.bodyBytes, flush: true);
+			print("success");
+			return file.path;
+		}catch(e){
+			print(e);
+		}
 	}
 	
 	@override

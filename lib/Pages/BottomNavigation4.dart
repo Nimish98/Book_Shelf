@@ -138,7 +138,7 @@ class _SellingState extends State<Selling> {
                                       Row(
                                         children: [
                                           Text(
-                                            "Person Name:",
+                                            "Person Name: ",
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                               fontSize: 18,
@@ -150,7 +150,7 @@ class _SellingState extends State<Selling> {
                                             flex: 1,
                                           ),
                                           Text(
-                                            "Nimish Mehrotra",
+                                            map.values.elementAt(i)["PostedBy"],
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                               fontSize: 15,
@@ -181,7 +181,7 @@ class _SellingState extends State<Selling> {
                                             flex: 1,
                                           ),
                                           Text(
-                                            s?"Sell":"Exchange",
+                                            map.values.elementAt(i)["action"] == "ex"?"Exchange":"Sell",
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                               fontSize: 15,
@@ -202,7 +202,7 @@ class _SellingState extends State<Selling> {
                                         children: [
                                           RaisedButton(
                                             onPressed: (){
-                                              print("Buy Now store pressed");
+                                            
                                             },
                                             elevation: 10,
                                             child: Text(

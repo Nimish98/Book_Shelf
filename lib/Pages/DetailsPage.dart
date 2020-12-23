@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:book_management/Class/Books.dart';
 import 'package:book_management/Class/UserDetails.dart';
 import 'package:book_management/Other/CRUD.dart';
+import 'package:book_management/Other/PDFViewer.dart';
 import 'package:book_management/Other/background.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -305,7 +306,9 @@ class _DetailPageState extends State<DetailPage>{
             alignment: Alignment.bottomCenter,
             child: RaisedButton(
                 onPressed: (){
-                  print("Buy Now");
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>PDFViewer(
+                    pdf: widget.books.location,),
+                  ));
                 },
               elevation: 10,
                 child: Text(

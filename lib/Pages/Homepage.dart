@@ -24,7 +24,7 @@ class HomePage extends StatefulWidget{
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   List<Books> temp;
-  List<Books> filtered;
+  List<Books> filtered = [];
   double xoffSet = 0;
   double yoffSet = 0;
   double angle = 0;
@@ -51,8 +51,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     readBooks().then((value){
       setState(() {
         temp =value;
+        filtered.addAll(temp);
       });
-      filtered.addAll(temp);
     });
     Future.delayed(Duration.zero, () {
       showDialog(
