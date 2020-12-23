@@ -23,6 +23,7 @@ class HomePage extends StatefulWidget{
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   List<Books> temp;
+  List<Books> filtered;
   double xoffSet = 0;
   double yoffSet = 0;
   double angle = 0;
@@ -464,7 +465,30 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                         Container(
                                           child: RaisedButton(
                                             onPressed: () {
-                                              print("pressed");
+                                              if(verticalList[index].s == "Fiction"){
+                                                filtered.clear();
+                                                filtered.addAll(temp);
+                                                setState(() {
+                                                  filtered.removeWhere((element) => element.genre != "Fiction");
+                                                });
+                                                print(filtered.length);
+                                              }
+                                              
+                                              else if (verticalList[index].s =="Science"){
+                                                filtered.clear();
+                                                filtered.addAll(temp);
+                                                setState(() {
+                                                  filtered.removeWhere((element) => element.genre != "Sci-FI");
+                                                });
+                                              }
+                                              
+                                              else if(verticalList[index].s =="Education"){
+                                                filtered.clear();
+                                                filtered.addAll(temp);
+                                                setState(() {
+                                                  filtered.retainWhere((element) => element.genre =="Academics");
+                                                });
+                                              }
                                             },
                                             child: Center(
                                               child: Icon(
@@ -517,12 +541,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                 child: SingleChildScrollView(
                                   physics: BouncingScrollPhysics(),
                                   scrollDirection: Axis.horizontal,
-                                  child: temp != null?Row(
+                                  child: filtered != null?Row(
                                     children: [
                                       ListView.builder(
                                         scrollDirection: Axis.horizontal,
                                         shrinkWrap: true,
-                                        itemCount:temp.length,
+                                        itemCount:filtered.length,
                                         itemBuilder: (BuildContext context, index) {
                                           return Padding(
                                             padding: EdgeInsets.only(left: 40.0),
@@ -543,7 +567,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                                       mainAxisAlignment: MainAxisAlignment.center,
                                                       children: [
                                                         Text(
-                                                            temp[index].name,
+                                                            filtered[index].name,
                                                             maxLines: 4,
                                                             style: TextStyle(
                                                               color: Color(0xFF42210B),
@@ -596,7 +620,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                                                   ),
                                                                 ),
                                                                 TextSpan(
-                                                                  text: "${temp[index].price}"
+                                                                  text: "${filtered[index].price}"
                                                                       .toString(),
                                                                   style: TextStyle(
                                                                     fontSize: 15,
@@ -648,7 +672,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                                                       )
                                                                   ),
                                                                   Text(
-                                                                      temp[index].intro,
+                                                                      filtered[index].intro,
                                                                       overflow: TextOverflow.ellipsis,
                                                                       maxLines: 2,
                                                                       style: TextStyle(
@@ -684,7 +708,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                                       mainAxisAlignment: MainAxisAlignment.start,
                                                       children: [
                                                         Text(
-                                                          temp[index].rating.toString(),
+                                                          filtered[index].rating.toString(),
                                                           style: TextStyle(
                                                               fontSize: 17,
                                                               color: Color(0xFF42210B),
@@ -706,7 +730,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                               ),
                                               onTap: (){
                                                 Navigator.push(context,MaterialPageRoute(builder: (context) => DetailPage(
-                                                  books: temp[index],
+                                                  books: filtered[index],
+                                                  userDetails: widget.userDetails,
                                                 )));
                                               },
                                             ),

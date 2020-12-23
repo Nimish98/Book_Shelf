@@ -30,6 +30,8 @@ dependencies:
   firebase_database: ^4.3.0
   firebase_storage: ^5.2.0
   file_picker: ^2.1.4
+  flutter_pdfview:
+  path_provider:
 
 
   # The following adds the Cupertino Icons font to your application.
