@@ -394,41 +394,45 @@ class _SellingState extends State<Selling> {
                                       ),
                                     ),
                                     fileName != null?Text(fileName):Container(),
-                                    SizedBox(height: 20,),
-                                    RaisedButton(
-                                      elevation: 6,
-                                      color: Color(0xFF8C6239),
-                                      onPressed: () async{
-                                        if(key.currentState.validate()){
-                                          setState((){
-                                            loading = true;
-                                          });
-                                          key.currentState.save();
-                                          await postSellExchange(pdf, bookName, action, widget.userDetails);
-                                          setState((){
-                                            loading = false;
-                                          });
-                                          Navigator.pop(context);
-                                        }
-                                      },
-                                      child: loading?Center(
-                                          child: CircularProgressIndicator(
-                                            valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF8C6239)),
-                                          )):Text(
-                                        "SUBMIT",
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          color: Color.fromRGBO(251, 176, 59, 1),
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w400,
-                                          letterSpacing: 3
+                                    SizedBox(height: 15,),
+                                    Container(
+                                      width: 150,
+                                      height: 40,
+                                      child: RaisedButton(
+                                        elevation: 6,
+                                        color: Color(0xFF8C6239),
+                                        onPressed: () async{
+                                          if(key.currentState.validate()){
+                                            setState((){
+                                              loading = true;
+                                            });
+                                            key.currentState.save();
+                                            await postSellExchange(pdf, bookName, action, widget.userDetails);
+                                            setState((){
+                                              loading = false;
+                                            });
+                                            Navigator.pop(context);
+                                          }
+                                        },
+                                        child: loading?Center(
+                                            child: CircularProgressIndicator(
+                                              valueColor: AlwaysStoppedAnimation<Color>(Color.fromRGBO(251, 176, 59, 1),),
+                                            )):Text(
+                                          "SUBMIT",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            color: Color.fromRGBO(251, 176, 59, 1),
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w400,
+                                            letterSpacing: 3
+                                          ),
                                         ),
-                                      ),
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.all(Radius.circular(20)),
-                                        side: BorderSide(
-                                          color: Color.fromRGBO(251, 176, 59, 1),
-                                          width: 2,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                                          side: BorderSide(
+                                            color: Color.fromRGBO(251, 176, 59, 1),
+                                            width: 2,
+                                          ),
                                         ),
                                       ),
                                     )
