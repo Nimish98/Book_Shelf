@@ -145,12 +145,6 @@ class LoginState extends State<Login>{
                                       userDetails: response,
                                     )));
                               }
-                              showDialog(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  return dialog(context);
-                                },
-                              );
                             },
                             child: Text("LOGIN",
                               style: TextStyle(fontSize: 21,fontFamily: "Myriad"),
