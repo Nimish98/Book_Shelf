@@ -52,6 +52,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       setState(() {
         temp =value;
       });
+      filtered.addAll(temp);
     });
     Future.delayed(Duration.zero, () {
       showDialog(
