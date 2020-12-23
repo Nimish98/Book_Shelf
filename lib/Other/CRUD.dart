@@ -144,7 +144,7 @@ Future<List<Books>> readFavBooks(UserDetails userDetails) async{
 						if(booksDetails["name"] == book["book"]){
 							
 							Books temp = Books(name: booksDetails["name"], rating:booksDetails["rating"], image: booksDetails["image"], author: booksDetails["author"], intro: booksDetails["intro"],
-								price: booksDetails["price"], location: booksDetails["location"],genre: book["genre"], );
+								price: booksDetails["price"], location: booksDetails["location"],genre: book["genre"], fav: false);
 							books.add(temp);
 							print(temp.name);
 						}
