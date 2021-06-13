@@ -10,12 +10,13 @@
 ## MockUps & Designs of the Application 
 
 All Designs are made & edited in Adobe Illustrator.
+
 <p float="left">
-![Splash Screen](https://user-images.githubusercontent.com/59786443/121807040-15dadb00-cc70-11eb-8f5e-d202b2f40cdf.png)
-### SPLASH SCREEN
-![loginSignUp gif](https://user-images.githubusercontent.com/59786443/121806816-07d88a80-cc6f-11eb-9632-ae442a71c8af.gif)
-### INTRODUCTION PAGE
-![login Sighup page](https://user-images.githubusercontent.com/59786443/121807118-79650880-cc70-11eb-9aa2-afb0071e981c.png)
+  <img src="https://user-images.githubusercontent.com/59786443/121807040-15dadb00-cc70-11eb-8f5e-d202b2f40cdf.png" width="100" />
+  <img src="https://user-images.githubusercontent.com/59786443/121806816-07d88a80-cc6f-11eb-9632-ae442a71c8af.gif" width="100" /> 
+  <img src="https://user-images.githubusercontent.com/59786443/121807118-79650880-cc70-11eb-9aa2-afb0071e981c.png" width="100" />
+</p>
+![login Sighup page]()
 ### LOGIN SIGNUP PAGE
 ![Login](https://user-images.githubusercontent.com/59786443/121807004-dd3b0180-cc6f-11eb-86ea-1bb4e7435659.png)
 ### LOGIN PAGE
@@ -33,4 +34,3 @@ All Designs are made & edited in Adobe Illustrator.
 ### EXPANDED NOTIFICATION OF BLOOD BANK
 ![Starting page](https://user-images.githubusercontent.com/59786443/121806829-11fa8900-cc6f-11eb-97e7-bd267dd5a194.png)
 ### BOOK SHOP PAGE
-</p>
