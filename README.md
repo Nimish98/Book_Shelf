@@ -1,8 +1,8 @@
 # Book Shop Management System (Book Shelf)
 
-* * This Application is built with Flutter Framework & Firebase Services is used for authentication,storing database of users & for storing books P.D.F.
-* * This application is a book shop management sytem in which users can can read books of different genres,can purchase them,sell old books & exchange books hassle free.
-* * This application is having a blood bank extension in which users can update their blood details so as and when a blood requirements comes we can target that specific user which has that partcular blood group.  
+* This Application is built with Flutter Framework & Firebase Services is used for authentication,storing database of users & for storing books P.D.F.
+* This application is a book shop management sytem in which users can can read books of different genres,can purchase them,sell old books & exchange books hassle free.
+* This application is having a blood bank extension in which users can update their blood details so as and when a blood requirements comes we can target that specific user which has that partcular blood group.  
 
 ![logo](https://user-images.githubusercontent.com/59786443/121806819-0a3ae480-cc6f-11eb-9cf8-37010ea43dbe.png)
 
@@ -10,7 +10,7 @@
 ## MockUps & Designs of the Application 
 
 All Designs are made & edited in Adobe Illustrator.
-
+<p float="left">
 ![Splash Screen](https://user-images.githubusercontent.com/59786443/121807040-15dadb00-cc70-11eb-8f5e-d202b2f40cdf.png)
 ### SPLASH SCREEN
 ![loginSignUp gif](https://user-images.githubusercontent.com/59786443/121806816-07d88a80-cc6f-11eb-9632-ae442a71c8af.gif)
@@ -33,3 +33,4 @@ All Designs are made & edited in Adobe Illustrator.
 ### EXPANDED NOTIFICATION OF BLOOD BANK
 ![Starting page](https://user-images.githubusercontent.com/59786443/121806829-11fa8900-cc6f-11eb-97e7-bd267dd5a194.png)
 ### BOOK SHOP PAGE
+</p>
