@@ -34,5 +34,5 @@ All Designs are made & edited in Adobe Illustrator.
 
 <p float="left">
   <img src="https://user-images.githubusercontent.com/59786443/121806820-0ad37b00-cc6f-11eb-98bc-8dd76f667818.gif" />
-  <img src="https://user-images.githubusercontent.com/59786443/121806822-0d35d500-cc6f-11eb-8e41-07f39f5c4180.png" />
+  <img src="https://user-images.githubusercontent.com/59786443/121808047-72d89000-cc74-11eb-9bd6-8a9e29b400e2.gif" />
   </p>
