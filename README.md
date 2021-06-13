@@ -14,25 +14,25 @@ All Designs are made & edited in Adobe Illustrator.
 ### Splash,SignUp,Login Pages
 
 <p float="left">
-  <img src="https://user-images.githubusercontent.com/59786443/121807040-15dadb00-cc70-11eb-8f5e-d202b2f40cdf.png" width="220" />
-  <img src="https://user-images.githubusercontent.com/59786443/121806816-07d88a80-cc6f-11eb-9632-ae442a71c8af.gif" width="220" /> 
-  <img src="https://user-images.githubusercontent.com/59786443/121807118-79650880-cc70-11eb-9aa2-afb0071e981c.png" width="220" />
-  <img src="https://user-images.githubusercontent.com/59786443/121807004-dd3b0180-cc6f-11eb-86ea-1bb4e7435659.png" width="220" />
-  <img src="https://user-images.githubusercontent.com/59786443/121806980-cac0c800-cc6f-11eb-83b0-93360b0a341c.png" width="220" />
+  <img src="https://user-images.githubusercontent.com/59786443/121807040-15dadb00-cc70-11eb-8f5e-d202b2f40cdf.png" width="225" />
+  <img src="https://user-images.githubusercontent.com/59786443/121806816-07d88a80-cc6f-11eb-9632-ae442a71c8af.gif" width="225" /> 
+  <img src="https://user-images.githubusercontent.com/59786443/121807118-79650880-cc70-11eb-9aa2-afb0071e981c.png" width="225" />
+  <img src="https://user-images.githubusercontent.com/59786443/121807004-dd3b0180-cc6f-11eb-86ea-1bb4e7435659.png" width="225" />
+  <img src="https://user-images.githubusercontent.com/59786443/121806980-cac0c800-cc6f-11eb-83b0-93360b0a341c.png" width="225" />
 </p>
 
 ### Home,Side Drawer,Books & Book Shop Page
 
 <p float="left">
-  <img src="https://user-images.githubusercontent.com/59786443/121806744-c9db6680-cc6e-11eb-92f9-b3579b9e7c05.png" width="220" />
-  <img src="https://user-images.githubusercontent.com/59786443/121806768-d8c21900-cc6e-11eb-89e5-19426c5bd52d.png" width="220" /> 
-  <img src="https://user-images.githubusercontent.com/59786443/121806733-b8925a00-cc6e-11eb-8f66-4134ce326ca2.png" width="220" />
-  <img src="https://user-images.githubusercontent.com/59786443/121806829-11fa8900-cc6f-11eb-97e7-bd267dd5a194.png" width="220" />
+  <img src="https://user-images.githubusercontent.com/59786443/121806744-c9db6680-cc6e-11eb-92f9-b3579b9e7c05.png" width="225" />
+  <img src="https://user-images.githubusercontent.com/59786443/121806768-d8c21900-cc6e-11eb-89e5-19426c5bd52d.png" width="225" /> 
+  <img src="https://user-images.githubusercontent.com/59786443/121806733-b8925a00-cc6e-11eb-8f66-4134ce326ca2.png" width="225" />
+  <img src="https://user-images.githubusercontent.com/59786443/121806829-11fa8900-cc6f-11eb-97e7-bd267dd5a194.png" width="225" />
   </p>
 
 ### Notifications
 
 <p float="left">
-  <img src="https://user-images.githubusercontent.com/59786443/121806820-0ad37b00-cc6f-11eb-98bc-8dd76f667818.gif" width="220" />
-  <img src="https://user-images.githubusercontent.com/59786443/121806822-0d35d500-cc6f-11eb-8e41-07f39f5c4180.png" width="220" />
+  <img src="https://user-images.githubusercontent.com/59786443/121806820-0ad37b00-cc6f-11eb-98bc-8dd76f667818.gif" />
+  <img src="https://user-images.githubusercontent.com/59786443/121806822-0d35d500-cc6f-11eb-8e41-07f39f5c4180.png" />
   </p>
