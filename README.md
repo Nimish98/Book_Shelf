@@ -12,9 +12,9 @@
 All Designs are made & edited in Adobe Illustrator.
 
 <p float="left">
-  <img src="https://user-images.githubusercontent.com/59786443/121807040-15dadb00-cc70-11eb-8f5e-d202b2f40cdf.png" width="100" />
-  <img src="https://user-images.githubusercontent.com/59786443/121806816-07d88a80-cc6f-11eb-9632-ae442a71c8af.gif" width="100" /> 
-  <img src="https://user-images.githubusercontent.com/59786443/121807118-79650880-cc70-11eb-9aa2-afb0071e981c.png" width="100" />
+  <img src="https://user-images.githubusercontent.com/59786443/121807040-15dadb00-cc70-11eb-8f5e-d202b2f40cdf.png" width="200" />
+  <img src="https://user-images.githubusercontent.com/59786443/121806816-07d88a80-cc6f-11eb-9632-ae442a71c8af.gif" width="200" /> 
+  <img src="https://user-images.githubusercontent.com/59786443/121807118-79650880-cc70-11eb-9aa2-afb0071e981c.png" width="200" />
 </p>
 ![login Sighup page]()
 ### LOGIN SIGNUP PAGE
